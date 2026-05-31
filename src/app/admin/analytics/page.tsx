@@ -95,10 +95,10 @@ export default function AdminAnalytics() {
                           <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="2 4" vertical={false} stroke="hsl(36,14%,86%)" />
+                      <CartesianGrid strokeDasharray="2 4" vertical={false} stroke="hsl(var(--border))" />
                       <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} tickFormatter={(v: number) => `${v / 1_000_000}M`} />
-                      <Tooltip contentStyle={{ borderRadius: 6, border: '1px solid hsl(36,14%,86%)', boxShadow: 'none', fontSize: 12 }} />
+                      <Tooltip contentStyle={{ borderRadius: 6, border: '1px solid hsl(var(--border))', boxShadow: 'none', fontSize: 12 }} />
                       <Area type="monotone" dataKey="revenue" stroke="hsl(var(--primary))" strokeWidth={2.5} fillOpacity={1} fill="url(#colorRev)" />
                    </AreaChart>
                 </ResponsiveContainer>

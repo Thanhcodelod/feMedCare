@@ -123,10 +123,10 @@ export default function AdminDashboard() {
                       <stop offset="95%" stopColor="hsl(32,60%,42%)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="2 4" stroke="hsl(36,14%,86%)" vertical={false} />
+                  <CartesianGrid strokeDasharray="2 4" stroke="hsl(var(--border))" vertical={false} />
                   <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `${v / 1000000}M`} />
-                  <Tooltip contentStyle={{ background: "hsl(0,0%,100%)", border: "1px solid hsl(36,14%,86%)", borderRadius: 6, fontSize: 12 }} formatter={(v: number) => [`${(v / 1000000).toFixed(0)}M ₫`]} />
+                  <Tooltip contentStyle={{ background: "hsl(0,0%,100%)", border: "1px solid hsl(var(--border))", borderRadius: 6, fontSize: 12 }} formatter={(v: number) => [`${(v / 1000000).toFixed(0)}M ₫`]} />
                   <Area type="monotone" dataKey="revenue" stroke="hsl(32,60%,42%)" strokeWidth={2} fill="url(#revGrad)" />
                 </AreaChart>
               </ResponsiveContainer>
@@ -143,10 +143,10 @@ export default function AdminDashboard() {
             <div className="card-elevated p-4">
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={chartData.patientGrowth}>
-                  <CartesianGrid strokeDasharray="2 4" stroke="hsl(36,14%,86%)" vertical={false} />
+                  <CartesianGrid strokeDasharray="2 4" stroke="hsl(var(--border))" vertical={false} />
                   <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} axisLine={false} tickLine={false} />
-                  <Tooltip contentStyle={{ background: "hsl(0,0%,100%)", border: "1px solid hsl(36,14%,86%)", borderRadius: 6, fontSize: 12 }} />
+                  <Tooltip contentStyle={{ background: "hsl(0,0%,100%)", border: "1px solid hsl(var(--border))", borderRadius: 6, fontSize: 12 }} />
                   <Bar dataKey="patients" fill="hsl(var(--primary))" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>

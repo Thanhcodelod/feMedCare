@@ -11,7 +11,6 @@ import {
   Video,
   LogOut,
   ChevronLeft,
-  Stethoscope,
   X,
   Bell,
   HelpCircle,
@@ -113,13 +112,10 @@ export function Sidebar({
           collapsed && "justify-center px-0",
         )}
       >
-        <div className="w-7 h-7 bg-primary flex items-center justify-center flex-shrink-0 rounded-sm">
-          <Stethoscope className="w-3.5 h-3.5 text-primary-foreground" strokeWidth={2.25} />
-        </div>
+        <img src="/medcare-logo.png" alt="MedCare" className="h-12 w-auto flex-shrink-0 object-contain" />
         {!collapsed && (
           <div className="leading-tight">
-            <div className="text-sm font-display tracking-tight">MedCare</div>
-            <div className="text-2xs text-muted-foreground uppercase tracking-[0.1em] mt-0.5">
+            <div className="text-2xs text-muted-foreground uppercase tracking-[0.1em]">
               {roleLabel[role]}
             </div>
           </div>

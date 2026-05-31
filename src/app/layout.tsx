@@ -32,6 +32,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "MedCare — Clinical Workstation",
   description: "Hệ thống quản lý phòng khám hiện đại",
+  icons: {
+    icon: "/medcare-logo.png",
+    shortcut: "/medcare-logo.png",
+    apple: "/medcare-logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -2,8 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { 
-  Stethoscope, 
-  Video, 
+  Video,
   Calendar, 
   ShieldCheck, 
   ArrowRight, 
@@ -30,10 +29,7 @@ export default function LandingPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-              <Stethoscope className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-foreground">MedCare</span>
+            <img src="/medcare-logo.png" alt="MedCare" className="h-16 w-auto object-contain" />
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -115,7 +111,7 @@ export default function LandingPage() {
           <div className="relative lg:h-[600px] flex items-center justify-center">
              <div className="relative w-full aspect-square md:aspect-auto md:h-full max-w-xl bg-card rounded-md overflow-hidden ring-1 ring-border">
                 <img 
-                  src="/medcare_landing_hero_1776357154813.png" 
+                  src="/medcare_landing_hero_1776357154813.jpg"
                   alt="MedCare Hero" 
                   className="w-full h-full object-cover"
                 />
@@ -260,10 +256,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-1 space-y-6">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-                  <Stethoscope className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-xl font-bold">MedCare</span>
+                <img src="/medcare-logo.png" alt="MedCare" className="h-16 w-auto object-contain" />
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Nền tảng đặt lịch khám và tư vấn trực tuyến hàng đầu Việt Nam. Tận tâm vì sức khỏe cộng đồng.

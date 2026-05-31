@@ -91,15 +91,15 @@ export default function AdminAnalytics() {
                    <AreaChart data={chartData.revenue}>
                       <defs>
                         <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="hsl(192,50%,22%)" stopOpacity={0.12}/>
-                          <stop offset="95%" stopColor="hsl(192,50%,22%)" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.12}/>
+                          <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="2 4" vertical={false} stroke="hsl(36,14%,86%)" />
                       <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} tickFormatter={(v: number) => `${v / 1_000_000}M`} />
                       <Tooltip contentStyle={{ borderRadius: 6, border: '1px solid hsl(36,14%,86%)', boxShadow: 'none', fontSize: 12 }} />
-                      <Area type="monotone" dataKey="revenue" stroke="hsl(192,50%,22%)" strokeWidth={2.5} fillOpacity={1} fill="url(#colorRev)" />
+                      <Area type="monotone" dataKey="revenue" stroke="hsl(var(--primary))" strokeWidth={2.5} fillOpacity={1} fill="url(#colorRev)" />
                    </AreaChart>
                 </ResponsiveContainer>
              </div>

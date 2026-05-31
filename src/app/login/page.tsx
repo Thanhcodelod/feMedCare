@@ -2,7 +2,7 @@
 import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Stethoscope, Eye, EyeOff, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -129,10 +129,7 @@ function LoginInner() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4">
-            <Stethoscope className="w-7 h-7 text-primary-foreground" />
-          </div>
-          <h1 className="text-2xl font-bold">MedCare</h1>
+          <img src="/medcare-logo.png" alt="MedCare" className="h-32 w-auto object-contain mx-auto mb-3" />
           <p className="text-muted-foreground text-sm mt-1">
             Hệ thống Đặt lịch & Telemedicine
           </p>

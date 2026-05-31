@@ -10,7 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Solid deep teal — primary action. No glow, no gradient.
+        // Solid logo deep blue — primary action. No glow, no gradient.
         default:
           "bg-primary text-primary-foreground hover:bg-[hsl(var(--primary-glow))]",
         destructive:

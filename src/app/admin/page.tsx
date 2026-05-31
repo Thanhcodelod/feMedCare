@@ -147,7 +147,7 @@ export default function AdminDashboard() {
                   <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 11, fill: "hsl(200,12%,42%)" }} axisLine={false} tickLine={false} />
                   <Tooltip contentStyle={{ background: "hsl(0,0%,100%)", border: "1px solid hsl(36,14%,86%)", borderRadius: 6, fontSize: 12 }} />
-                  <Bar dataKey="patients" fill="hsl(192,50%,22%)" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="patients" fill="hsl(var(--primary))" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

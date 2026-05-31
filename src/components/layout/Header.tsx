@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Bell, Search, Menu, LogOut, ChevronDown } from "lucide-react";
+import { Search, Menu, LogOut, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { useAuthStore } from "@/redux/authStore";
 import { useLogout } from "@/hooks/useAuth";
 import {
@@ -62,19 +61,6 @@ export function Header({ onMobileMenuOpen, title }: HeaderProps) {
       </div>
 
       <div className="flex-1" />
-
-      <button
-        onClick={() => {}}
-        className="relative p-2 -mx-1 text-muted-foreground hover:text-foreground transition-colors"
-        aria-label="Thông báo"
-      >
-        <Bell className="w-4 h-4" />
-        <Badge className="absolute top-1 right-1 w-1.5 h-1.5 p-0 rounded-full bg-destructive border-0">
-          <span className="sr-only">3 thông báo</span>
-        </Badge>
-      </button>
-
-      <div className="h-5 w-px bg-border" aria-hidden />
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

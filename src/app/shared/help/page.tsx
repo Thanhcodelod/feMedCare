@@ -73,12 +73,12 @@ export default function HelpCenterPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {[
-            { label: "Gửi yêu cầu", icon: MessageSquare, color: "text-blue-500", desc: "Phản hồi trong 2h" },
-            { label: "Hướng dẫn SD", icon: FileText, color: "text-rose-500", desc: "Xem video & tài liệu" },
-            { label: "Bảo mật", icon: ShieldCheck, color: "text-emerald-500", desc: "Chính sách dữ liệu" },
+            { label: "Gửi yêu cầu", icon: MessageSquare, color: "text-info", desc: "Phản hồi trong 2h" },
+            { label: "Hướng dẫn SD", icon: FileText, color: "text-purple", desc: "Xem video & tài liệu" },
+            { label: "Bảo mật", icon: ShieldCheck, color: "text-success", desc: "Chính sách dữ liệu" },
           ].map(item => (
-            <div key={item.label} className="card-elevated p-6 text-center group cursor-pointer hover:border-primary/40 transition-all">
-              <div className={cn("w-12 h-12 rounded-md bg-muted flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform", item.color)}>
+            <div key={item.label} className="card-elevated p-6 text-center group cursor-pointer hover:border-primary/40 transition-colors">
+              <div className={cn("w-12 h-12 rounded-md bg-muted flex items-center justify-center mx-auto mb-4", item.color)}>
                 <item.icon className="w-6 h-6" />
               </div>
               <h4 className="font-bold mb-1">{item.label}</h4>
@@ -101,17 +101,17 @@ export default function HelpCenterPage() {
                 {cat.items.map(faq => (
                   <div 
                     key={faq.q} 
-                    className="card-elevated overflow-hidden border border-slate-100"
+                    className="card-elevated overflow-hidden border border-border"
                   >
                     <button 
                       onClick={() => toggleItem(faq.q)}
-                      className="w-full p-4 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
+                      className="w-full p-4 flex items-center justify-between text-left hover:bg-muted transition-colors"
                     >
                       <span className="font-medium text-sm">{faq.q}</span>
                       <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform", openItems.includes(faq.q) && "rotate-180")} />
                     </button>
                     {openItems.includes(faq.q) && (
-                      <div className="p-4 pt-0 text-sm text-muted-foreground bg-slate-50/50 animate-in slide-in-from-top-2">
+                      <div className="p-4 pt-0 text-sm text-muted-foreground bg-muted animate-in slide-in-from-top-2">
                         {faq.a}
                       </div>
                     )}
@@ -122,12 +122,12 @@ export default function HelpCenterPage() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 bg-primary rounded-[32px] text-white flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-16 p-8 bg-primary rounded-md text-primary-foreground flex flex-col md:flex-row items-center justify-between gap-8">
            <div className="space-y-2 text-center md:text-left">
               <h4 className="text-xl font-bold">Vẫn không tìm thấy câu trả lời?</h4>
               <p className="opacity-80 text-sm">Đội ngũ hỗ trợ của chúng tôi luôn sẵn sàng 24/7 để giải đáp thắc mắc của bạn.</p>
            </div>
-           <Button variant="secondary" className="rounded-full px-8 h-12 font-bold bg-white text-primary hover:bg-white/90">
+           <Button variant="secondary" className="px-8 h-12 font-bold bg-card text-primary hover:bg-card">
              Liên hệ hỗ trợ ngay
            </Button>
         </div>

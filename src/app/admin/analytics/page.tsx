@@ -58,10 +58,10 @@ export default function AdminAnalytics() {
           <p className="text-sm text-muted-foreground mt-1">Phân tích dữ liệu hoạt động toàn hệ thống MedCare</p>
         </div>
         <div className="flex gap-2">
-           <Button variant="outline" size="sm" className="rounded-xl gap-2 font-medium">
+           <Button variant="outline" size="sm" className="gap-2 font-medium">
              <Filter className="w-4 h-4" /> Lọc dữ liệu
            </Button>
-           <Button size="sm" className="rounded-xl gap-2 font-medium shadow-lg shadow-primary/10">
+           <Button size="sm" className="gap-2 font-medium">
              <Download className="w-4 h-4" /> Xuất báo cáo
            </Button>
         </div>
@@ -82,8 +82,8 @@ export default function AdminAnalytics() {
              <div className="card-elevated p-6">
                 <div className="flex items-center justify-between mb-6">
                    <h3 className="font-bold text-foreground">Doanh thu & Lịch khám</h3>
-                   <div className="flex gap-1 bg-muted p-1 rounded-lg">
-                      <Button variant="ghost" size="sm" className="h-7 text-[10px] px-2 rounded-md bg-white shadow-sm">Tháng</Button>
+                   <div className="flex gap-1 bg-muted p-1 rounded-md">
+                      <Button variant="ghost" size="sm" className="h-7 text-[10px] px-2 rounded-md bg-card">Tháng</Button>
                       <Button variant="ghost" size="sm" className="h-7 text-[10px] px-2 rounded-md">Tuần</Button>
                    </div>
                 </div>
@@ -142,9 +142,9 @@ export default function AdminAnalytics() {
                       { name: "BS. Trần Đức Hòa", spec: "Thần kinh", rating: 4.9, appointments: 128, growth: "+15%" },
                       { name: "BS. Nguyễn Bích Liên", spec: "Nội tiết", rating: 4.7, appointments: 115, growth: "+5%" },
                    ].map((doc, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-md hover:bg-slate-50 transition-colors">
+                      <div key={i} className="flex items-center justify-between p-3 rounded-md hover:bg-muted transition-colors">
                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-muted-foreground">
+                            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-muted-foreground">
                                {doc.name.charAt(3)}
                             </div>
                             <div>
@@ -161,7 +161,7 @@ export default function AdminAnalytics() {
                                <span className="text-sm font-bold">{doc.rating}</span>
                                <span className="text-xs">⭐</span>
                             </div>
-                            <ChevronRight className="w-4 h-4 text-slate-300" />
+                            <ChevronRight className="w-4 h-4 text-muted-foreground" />
                          </div>
                       </div>
                    ))}
@@ -176,7 +176,7 @@ export default function AdminAnalytics() {
                          <span className="text-muted-foreground font-medium">Server Uptime (API)</span>
                          <span className="text-success font-bold">99.98%</span>
                       </div>
-                      <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
                          <div className="bg-success h-full w-[99.9%]" />
                       </div>
                    </div>
@@ -185,7 +185,7 @@ export default function AdminAnalytics() {
                          <span className="text-muted-foreground font-medium">Băng thông Video Call</span>
                          <span className="text-primary font-bold">12 / 50 GB</span>
                       </div>
-                      <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
                          <div className="bg-primary h-full w-[24%]" />
                       </div>
                    </div>
@@ -194,12 +194,12 @@ export default function AdminAnalytics() {
                          <span className="text-muted-foreground font-medium">Lưu trữ ảnh & Hồ sơ</span>
                          <span className="text-warning font-bold">85%</span>
                       </div>
-                      <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
                          <div className="bg-warning h-full w-[85%]" />
                       </div>
                    </div>
                 </div>
-                <Button variant="outline" className="w-full mt-8 rounded-xl text-xs gap-2">
+                <Button variant="outline" className="w-full mt-8 text-xs gap-2">
                    <Database className="w-3 h-3" /> Quản lý tài nguyên
                 </Button>
              </div>

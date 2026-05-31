@@ -31,10 +31,10 @@ export default function AdminSettings() {
           </div>
           <div className="space-y-4">
             {roles.map(role => (
-              <div key={role.name} className="bg-muted/40 rounded-xl p-4">
+              <div key={role.name} className="bg-muted/40 rounded-md p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className={cn("text-xs font-semibold px-2.5 py-1 rounded-full", role.color)}>{role.name}</span>
-                  <Button variant="ghost" size="sm" onClick={() => {}} className="h-7 text-xs rounded-lg">Chỉnh sửa</Button>
+                  <Button variant="ghost" size="sm" onClick={() => {}} className="h-7 text-xs">Chỉnh sửa</Button>
                 </div>
                 <div className="grid grid-cols-2 gap-1.5">
                   {role.permissions.map(p => (
@@ -63,7 +63,7 @@ export default function AdminSettings() {
                   <Input defaultValue={item.value} className="h-8 text-sm" />
                 </div>
               ))}
-              <Button size="sm" onClick={() => {}} className="rounded-xl mt-2">Lưu cấu hình</Button>
+              <Button size="sm" onClick={() => {}} className="mt-2">Lưu cấu hình</Button>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function AdminSettings() {
               <div key={item.label} className="flex items-center justify-between py-2.5 border-b border-border/40 last:border-0">
                 <span className="text-sm">{item.label}</span>
                 <div className={cn("w-10 h-5 rounded-full relative cursor-pointer transition-colors", item.enabled ? "bg-primary" : "bg-muted")}>
-                  <div className={cn("w-4 h-4 bg-white rounded-full absolute top-0.5 transition-transform shadow-sm", item.enabled ? "translate-x-5" : "translate-x-0.5")} />
+                  <div className={cn("w-4 h-4 bg-card rounded-full absolute top-0.5 transition-transform", item.enabled ? "translate-x-5" : "translate-x-0.5")} />
                 </div>
               </div>
             ))}

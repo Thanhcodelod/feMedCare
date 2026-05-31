@@ -23,7 +23,8 @@ import {
   FileText,
   BadgeCheck,
   ChevronRight,
-  AlertCircle
+  AlertCircle,
+  Laptop
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -130,11 +131,11 @@ export default function DoctorSettings() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Sidebar Info Card */}
         <div className="lg:col-span-4 xl:col-span-3 space-y-6">
-          <Card className="border-none shadow-md bg-primary text-white overflow-hidden">
+          <Card className="border border-border bg-primary text-primary-foreground overflow-hidden">
             <CardContent className="pt-8 text-center pb-8">
-              <Avatar className="w-32 h-32 border-4 border-white/20 shadow-md mx-auto mb-6">
+              <Avatar className="w-32 h-32 ring-1 ring-border mx-auto mb-6">
                 <AvatarImage src={user?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.id}`} />
-                <AvatarFallback className="text-3xl font-bold bg-white/10 text-white">
+                <AvatarFallback className="text-3xl font-bold bg-card text-white">
                   {user?.fullName?.charAt(0)}
                 </AvatarFallback>
               </Avatar>
@@ -158,7 +159,7 @@ export default function DoctorSettings() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg">
+          <Card className="border border-border">
             <CardHeader className="pb-3 border-b border-border/50">
               <CardTitle className="text-sm font-bold flex items-center gap-2">
                 <Star className="w-4 h-4 text-warning" /> Huy hiệu & Thành tích
@@ -166,13 +167,13 @@ export default function DoctorSettings() {
             </CardHeader>
             <CardContent className="pt-4 space-y-3">
                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-warning/10 flex items-center justify-center text-warning">
+                  <div className="w-8 h-8 rounded-md bg-warning/10 flex items-center justify-center text-warning">
                      <GraduationCap className="w-4 h-4" />
                   </div>
                   <span className="text-xs font-medium">Bác sĩ ưu tú 2024</span>
                </div>
                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                      <FileText className="w-4 h-4" />
                   </div>
                   <span className="text-xs font-medium">15+ Công trình nghiên cứu</span>
@@ -185,22 +186,22 @@ export default function DoctorSettings() {
         <div className="lg:col-span-8 xl:col-span-9">
           <Tabs defaultValue="profile" className="w-full" onValueChange={setActiveTab}>
              <TabsList className="w-full justify-start bg-muted/30 p-1 rounded-md h-14 mb-8">
-              <TabsTrigger value="profile" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="profile" className="px-8 h-12 data-[state=active]:bg-card">
                 <User className="w-4 h-4 mr-2" /> Thông tin chuyên môn
               </TabsTrigger>
-              <TabsTrigger value="bio" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="bio" className="px-8 h-12 data-[state=active]:bg-card">
                 <FileText className="w-4 h-4 mr-2" /> Giới thiệu (Bio)
               </TabsTrigger>
-              <TabsTrigger value="security" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="security" className="px-8 h-12 data-[state=active]:bg-card">
                 <ShieldCheck className="w-4 h-4 mr-2" /> Bảo mật
               </TabsTrigger>
             </TabsList>
 
             {/* Professional Info Tab */}
-            <TabsContent value="profile" className="space-y-6 animate-in fade-in duration-500">
+            <TabsContent value="profile" className="space-y-6 animate-in fade-in duration-150">
                <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <Card className="border-none shadow-lg">
+                    <Card className="border border-border">
                       <CardHeader>
                         <CardTitle className="text-lg">Thông tin cơ bản</CardTitle>
                         <CardDescription>Thông tin hiển thị trên trang đặt lịch và tìm kiếm bác sĩ.</CardDescription>
@@ -213,7 +214,7 @@ export default function DoctorSettings() {
                             <FormItem>
                               <FormLabel>Họ và tên</FormLabel>
                               <FormControl>
-                                <Input {...field} className="rounded-xl" />
+                                <Input {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -226,7 +227,7 @@ export default function DoctorSettings() {
                             <FormItem>
                               <FormLabel>Email chuyên môn</FormLabel>
                               <FormControl>
-                                <Input {...field} disabled className="rounded-xl bg-muted/30" />
+                                <Input {...field} disabled className="bg-muted/30" />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -239,7 +240,7 @@ export default function DoctorSettings() {
                             <FormItem>
                               <FormLabel>Số điện thoại liên hệ</FormLabel>
                               <FormControl>
-                                <Input {...field} className="rounded-xl" />
+                                <Input {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -252,7 +253,7 @@ export default function DoctorSettings() {
                             <FormItem>
                               <FormLabel>Số chứng chỉ hành nghề</FormLabel>
                               <FormControl>
-                                <Input {...field} className="rounded-xl" />
+                                <Input {...field} />
                               </FormControl>
                               <FormDescription>Dùng để xác thực chuyên môn trên hệ thống.</FormDescription>
                               <FormMessage />
@@ -262,7 +263,7 @@ export default function DoctorSettings() {
                       </CardContent>
                     </Card>
 
-                    <Card className="border-none shadow-lg">
+                    <Card className="border border-border">
                       <CardHeader>
                         <CardTitle className="text-lg">Kinh nghiệm & Phí khám</CardTitle>
                         <CardDescription>Các thông số này ảnh hưởng đến việc phân phối lịch hẹn.</CardDescription>
@@ -275,7 +276,7 @@ export default function DoctorSettings() {
                             <FormItem>
                               <FormLabel>Chuyên khoa chính</FormLabel>
                               <FormControl>
-                                <Input placeholder="VD: Tim mạch, Nội tiết..." {...field} className="rounded-xl" />
+                                <Input placeholder="VD: Tim mạch, Nội tiết..." {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -288,11 +289,10 @@ export default function DoctorSettings() {
                             <FormItem>
                               <FormLabel>Số năm kinh nghiệm</FormLabel>
                               <FormControl>
-                                <Input 
-                                  type="number" 
-                                  {...field} 
-                                  onChange={e => field.onChange(parseInt(e.target.value))} 
-                                  className="rounded-xl" 
+                                <Input
+                                  type="number"
+                                  {...field}
+                                  onChange={e => field.onChange(parseInt(e.target.value))}
                                 />
                               </FormControl>
                               <FormMessage />
@@ -309,7 +309,7 @@ export default function DoctorSettings() {
                               </FormLabel>
                               <FormControl>
                                 <div className="relative">
-                                  <Input {...field} placeholder="VD: 200000" className="rounded-xl pl-10 h-12 text-lg font-bold text-primary" />
+                                  <Input {...field} placeholder="VD: 200000" className="pl-10 h-12 text-lg font-bold text-primary" />
                                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-bold">₫</span>
                                 </div>
                               </FormControl>
@@ -322,7 +322,7 @@ export default function DoctorSettings() {
                     </Card>
                     
                     <div className="flex justify-end pt-4">
-                        <Button type="submit" className="rounded-xl px-12 h-12 shadow-lg hover:shadow-primary/20 transition-all font-bold" disabled={updateProfile.isPending}>
+                        <Button type="submit" className="px-12 h-12 font-bold" disabled={updateProfile.isPending}>
                           {updateProfile.isPending ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Save className="w-4 h-4 mr-2" />}
                           Cập nhật hồ sơ bác sĩ
                         </Button>
@@ -332,8 +332,8 @@ export default function DoctorSettings() {
             </TabsContent>
 
             {/* Bio Tab */}
-            <TabsContent value="bio" className="animate-in fade-in duration-500">
-               <Card className="border-none shadow-lg">
+            <TabsContent value="bio" className="animate-in fade-in duration-150">
+               <Card className="border border-border">
                   <CardHeader>
                     <CardTitle>Tiểu sử bác sĩ</CardTitle>
                     <CardDescription>Viết một đoạn giới thiệu ngắn gọn về kinh nghiệm, bằng cấp và triết lý chữa bệnh của bạn.</CardDescription>
@@ -360,7 +360,7 @@ export default function DoctorSettings() {
                          <p className="text-xs text-muted-foreground">Tip: Một tiểu sử chi tiết và tâm huyết sẽ tăng tỷ lệ bệnh nhân lựa chọn bạn lên đến 40%.</p>
                       </div>
                       <div className="flex justify-end pt-4">
-                        <Button onClick={form.handleSubmit(onSubmit)} className="rounded-xl px-12 h-12 shadow-lg" disabled={updateProfile.isPending}>
+                        <Button onClick={form.handleSubmit(onSubmit)} className="px-12 h-12" disabled={updateProfile.isPending}>
                           Lưu giới thiệu
                         </Button>
                       </div>
@@ -369,9 +369,9 @@ export default function DoctorSettings() {
             </TabsContent>
 
             {/* Security Tab */}
-            <TabsContent value="security" className="animate-in fade-in duration-500">
+            <TabsContent value="security" className="animate-in fade-in duration-150">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="border-none shadow-lg">
+                <Card className="border border-border">
                   <CardHeader>
                     <CardTitle className="text-sm font-bold flex items-center gap-2">
                        <ShieldCheck className="w-4 h-4 text-primary" /> Mật khẩu & Đăng nhập
@@ -389,16 +389,16 @@ export default function DoctorSettings() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-none shadow-lg">
+                <Card className="border border-border">
                   <CardHeader>
                     <CardTitle className="text-sm font-bold flex items-center gap-2">
-                       <Briefcase className="w-4 h-4 text-indigo-500" /> Thiết bị đăng nhập
+                       <Briefcase className="w-4 h-4 text-info" /> Thiết bị đăng nhập
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="bg-muted/30 p-3 rounded-xl flex items-center justify-between">
+                    <div className="bg-muted/30 p-3 rounded-md flex items-center justify-between">
                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-xs">💻</div>
+                          <div className="w-8 h-8 rounded-full bg-card flex items-center justify-center"><Laptop className="w-4 h-4 text-muted-foreground" /></div>
                           <div>
                              <p className="text-xs font-bold">MacBook Pro M2</p>
                              <p className="text-[10px] text-muted-foreground">Hà Nội, Việt Nam · Đang online</p>

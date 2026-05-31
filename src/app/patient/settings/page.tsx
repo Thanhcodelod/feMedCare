@@ -187,10 +187,10 @@ export default function PatientSettings() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Sidebar Bio Card */}
         <div className="lg:col-span-4 xl:col-span-3 space-y-6">
-          <Card className="border-none shadow-md overflow-hidden bg-gradient-to-b from-primary/5 to-background">
+          <Card className="border border-border overflow-hidden bg-card">
             <CardContent className="pt-8 text-center">
               <div className="relative inline-block group mb-6">
-                <Avatar className="w-32 h-32 border-4 border-white shadow-md">
+                <Avatar className="w-32 h-32 ring-1 ring-border">
                   <AvatarImage src={user?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.id}`} />
                   <AvatarFallback className="text-3xl font-bold bg-primary/10 text-primary">
                     {user?.fullName?.charAt(0)}
@@ -204,16 +204,16 @@ export default function PatientSettings() {
               <p className="text-xs text-muted-foreground font-mono mb-4 uppercase tracking-widest">PATIENT ID: {user?.id?.slice(-8).toUpperCase()}</p>
               
               <div className="grid grid-cols-2 gap-3 mt-6">
-                <div className="p-3 bg-white/50 backdrop-blur-sm rounded-md border border-white/50 text-left">
+                <div className="p-3 bg-card rounded-md border border-border text-left">
                   <div className="flex items-center gap-2 mb-1">
-                    <Droplets className="w-3.5 h-3.5 text-red-500" />
+                    <Droplets className="w-3.5 h-3.5 text-destructive" />
                     <span className="text-[10px] text-muted-foreground uppercase font-bold">Nhóm máu</span>
                   </div>
                   <span className="text-sm font-bold">{profile?.bloodType || "O+"}</span>
                 </div>
-                <div className="p-3 bg-white/50 backdrop-blur-sm rounded-md border border-white/50 text-left">
+                <div className="p-3 bg-card rounded-md border border-border text-left">
                   <div className="flex items-center gap-2 mb-1">
-                    <Scale className="w-3.5 h-3.5 text-blue-500" />
+                    <Scale className="w-3.5 h-3.5 text-info" />
                     <span className="text-[10px] text-muted-foreground uppercase font-bold">BMI</span>
                   </div>
                   <span className="text-sm font-bold">22.5 (Bình thường)</span>
@@ -222,7 +222,7 @@ export default function PatientSettings() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg">
+          <Card className="border border-border">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-bold flex items-center gap-2">
                 <Target className="w-4 h-4 text-primary" /> Mục tiêu sức khỏe
@@ -244,7 +244,7 @@ export default function PatientSettings() {
                   <span className="font-bold">1.5 / 2.0L</span>
                 </div>
                 <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div className="bg-blue-400 h-full w-[75%]" />
+                  <div className="bg-info h-full w-[75%]" />
                 </div>
               </div>
             </CardContent>
@@ -255,23 +255,23 @@ export default function PatientSettings() {
         <div className="lg:col-span-8 xl:col-span-9">
           <Tabs defaultValue="profile" className="w-full" onValueChange={setActiveTab}>
             <TabsList className="w-full justify-start bg-muted/30 p-1 rounded-md h-14 mb-8">
-              <TabsTrigger value="profile" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="profile" className="px-8 h-12 data-[state=active]:bg-card">
                 <User className="w-4 h-4 mr-2" /> Hồ sơ cá nhân
               </TabsTrigger>
-              <TabsTrigger value="health" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="health" className="px-8 h-12 data-[state=active]:bg-card">
                 <Activity className="w-4 h-4 mr-2" /> Chỉ số sức khỏe
               </TabsTrigger>
-              <TabsTrigger value="history" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="history" className="px-8 h-12 data-[state=active]:bg-card">
                 <History className="w-4 h-4 mr-2" /> Tiền sử y khoa
               </TabsTrigger>
-              <TabsTrigger value="insurance" className="rounded-xl px-8 h-12 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <TabsTrigger value="insurance" className="px-8 h-12 data-[state=active]:bg-card">
                 <CreditCard className="w-4 h-4 mr-2" /> Bảo hiểm
               </TabsTrigger>
             </TabsList>
 
             {/* Profile Tab */}
-            <TabsContent value="profile" className="space-y-6 animate-in fade-in duration-500">
-              <Card className="border-none shadow-lg">
+            <TabsContent value="profile" className="space-y-6 animate-in fade-in duration-150">
+              <Card className="border border-border">
                 <CardHeader>
                   <CardTitle>Thông tin định danh</CardTitle>
                   <CardDescription>Cập nhật thông tin liên hệ và định danh chính xác để thuận tiện cho việc đặt lịch.</CardDescription>
@@ -287,7 +287,7 @@ export default function PatientSettings() {
                             <FormItem>
                               <FormLabel>Họ và tên</FormLabel>
                               <FormControl>
-                                <Input placeholder="Nguyễn Văn A" {...field} className="rounded-xl" />
+                                <Input placeholder="Nguyễn Văn A" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -300,7 +300,7 @@ export default function PatientSettings() {
                             <FormItem>
                               <FormLabel>Email</FormLabel>
                               <FormControl>
-                                <Input placeholder="email@example.com" {...field} disabled className="rounded-xl bg-muted/30" />
+                                <Input placeholder="email@example.com" {...field} disabled className="bg-muted/30" />
                               </FormControl>
                               <FormDescription>Email không thể thay đổi</FormDescription>
                               <FormMessage />
@@ -314,7 +314,7 @@ export default function PatientSettings() {
                             <FormItem>
                               <FormLabel>Số điện thoại</FormLabel>
                               <FormControl>
-                                <Input placeholder="09xx xxx xxx" {...field} className="rounded-xl" />
+                                <Input placeholder="09xx xxx xxx" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -327,7 +327,7 @@ export default function PatientSettings() {
                             <FormItem>
                               <FormLabel>Ngày sinh</FormLabel>
                               <FormControl>
-                                <Input type="date" {...field} className="rounded-xl" />
+                                <Input type="date" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -341,7 +341,7 @@ export default function PatientSettings() {
                               <FormLabel>Giới tính</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
-                                  <SelectTrigger className="rounded-xl">
+                                  <SelectTrigger>
                                     <SelectValue placeholder="Chọn giới tính" />
                                   </SelectTrigger>
                                 </FormControl>
@@ -363,7 +363,7 @@ export default function PatientSettings() {
                               <FormLabel>Nhóm máu</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
-                                  <SelectTrigger className="rounded-xl">
+                                  <SelectTrigger>
                                     <SelectValue placeholder="Chọn nhóm máu" />
                                   </SelectTrigger>
                                 </FormControl>
@@ -384,7 +384,7 @@ export default function PatientSettings() {
                         />
                       </div>
                       <div className="flex justify-end pt-4 border-t border-border/50">
-                        <Button type="submit" className="rounded-xl px-12 h-11" disabled={updateProfile.isPending}>
+                        <Button type="submit" className="px-12 h-11" disabled={updateProfile.isPending}>
                           {updateProfile.isPending ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Save className="w-4 h-4 mr-2" />}
                           Lưu hồ sơ
                         </Button>
@@ -394,7 +394,7 @@ export default function PatientSettings() {
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-lg">
+              <Card className="border border-border">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <AlertCircle className="w-4 h-4 text-destructive" />
@@ -421,7 +421,7 @@ export default function PatientSettings() {
                                 <Input
                                   placeholder="Nguyễn Văn B"
                                   maxLength={EMERGENCY_CONTACT_LIMITS.name}
-                                  className="rounded-xl"
+                                  className="rounded-md"
                                   {...field}
                                 />
                               </FormControl>
@@ -440,7 +440,7 @@ export default function PatientSettings() {
                                   placeholder="09xx xxx xxx"
                                   inputMode="tel"
                                   maxLength={EMERGENCY_CONTACT_LIMITS.phone}
-                                  className="rounded-xl"
+                                  className="rounded-md"
                                   {...field}
                                 />
                               </FormControl>
@@ -458,7 +458,7 @@ export default function PatientSettings() {
                                 <Input
                                   placeholder="Vd: Bố, Mẹ, Anh/Chị..."
                                   maxLength={EMERGENCY_CONTACT_LIMITS.relationship}
-                                  className="rounded-xl"
+                                  className="rounded-md"
                                   {...field}
                                 />
                               </FormControl>
@@ -470,7 +470,7 @@ export default function PatientSettings() {
                       <div className="flex justify-end pt-4 border-t border-border/50">
                         <Button
                           type="submit"
-                          className="rounded-xl px-12 h-11"
+                          className="px-12 h-11"
                           disabled={updatePatientDetails.isPending}
                         >
                           {updatePatientDetails.isPending ? (
@@ -493,8 +493,8 @@ export default function PatientSettings() {
             </TabsContent>
 
             {/* Medical History Tab */}
-            <TabsContent value="history" className="animate-in fade-in duration-500">
-              <Card className="border-none shadow-lg">
+            <TabsContent value="history" className="animate-in fade-in duration-150">
+              <Card className="border border-border">
                 <CardHeader>
                   <CardTitle>Lịch sử bệnh lý & Phẫu thuật</CardTitle>
                   <CardDescription>Ghi lại các sự kiện y khoa quan trọng để bác sĩ có cái nhìn tổng quát khi khám bệnh.</CardDescription>
@@ -530,15 +530,13 @@ export default function PatientSettings() {
             </TabsContent>
 
             {/* Insurance Tab */}
-            <TabsContent value="insurance" className="animate-in fade-in duration-500">
+            <TabsContent value="insurance" className="animate-in fade-in duration-150">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative group">
                      {/* The Insurance Card UI */}
-                     <div className="aspect-[1.586/1] w-full bg-gradient-to-br from-[#1a2a6c] via-[#b21f1f] to-[#fdbb2d] rounded-[30px] p-8 text-white shadow-md overflow-hidden relative">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl" />
-                        <div className="flex justify-between items-start relative mb-12">
+                     <div className="aspect-[1.586/1] w-full bg-primary rounded-md p-8 text-white overflow-hidden relative">                        <div className="flex justify-between items-start relative mb-12">
                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                              <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
                                  <ShieldCheck className="w-6 h-6" />
                               </div>
                               <span className="font-bold text-lg tracking-tight">MedCare Premium</span>
@@ -563,7 +561,7 @@ export default function PatientSettings() {
                   </div>
 
                   <div className="space-y-6">
-                     <Card className="border-none shadow-lg">
+                     <Card className="border border-border">
                         <CardHeader>
                            <CardTitle className="text-lg">Chi tiết bảo hiểm</CardTitle>
                         </CardHeader>

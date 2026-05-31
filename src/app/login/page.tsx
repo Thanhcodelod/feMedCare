@@ -43,7 +43,7 @@ function ReasonBanner() {
   return (
     <div
       role="status"
-      className={cn("mb-4 flex items-start gap-2 rounded-xl border px-3 py-2 text-sm", classes)}
+      className={cn("mb-4 flex items-start gap-2 rounded-md border px-3 py-2 text-sm", classes)}
     >
       <Icon className="w-4 h-4 mt-0.5 flex-shrink-0" />
       <span>{info.text}</span>
@@ -94,7 +94,7 @@ function LoginInner() {
 
   if (loginMutation.isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-info/5 flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
           <p className="text-muted-foreground">Đang chuyển hướng...</p>
@@ -126,11 +126,11 @@ function LoginInner() {
   const isPending = loginMutation.isPending || registerMutation.isPending;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-info/5 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4 shadow-primary">
-            <Stethoscope className="w-7 h-7 text-white" />
+          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4">
+            <Stethoscope className="w-7 h-7 text-primary-foreground" />
           </div>
           <h1 className="text-2xl font-bold">MedCare</h1>
           <p className="text-muted-foreground text-sm mt-1">
@@ -139,15 +139,15 @@ function LoginInner() {
         </div>
         <div className="card-elevated p-6">
           <ReasonBanner />
-          <div className="flex gap-1 mb-6 bg-muted/40 rounded-xl p-1">
+          <div className="flex gap-1 mb-6 bg-muted/40 rounded-md p-1">
             {(["login", "register"] as Mode[]).map((m) => (
               <button
                 key={m}
                 onClick={() => setMode(m)}
                 className={cn(
-                  "flex-1 py-2 rounded-lg text-sm font-medium transition-colors",
+                  "flex-1 py-2 rounded-md text-sm font-medium transition-colors",
                   mode === m
-                    ? "bg-white shadow-sm text-foreground"
+                    ? "bg-card text-foreground"
                     : "text-muted-foreground",
                 )}
               >
@@ -214,7 +214,7 @@ function LoginInner() {
               </div>
               <Button
                 type="submit"
-                className="w-full rounded-xl h-10 font-semibold"
+                className="w-full h-10 font-semibold"
                 disabled={isPending || !canSubmitLogin}
               >
                 {isPending ? (
@@ -294,7 +294,7 @@ function LoginInner() {
 
               <Button
                 type="submit"
-                className="w-full rounded-xl h-10 font-semibold"
+                className="w-full h-10 font-semibold"
                 disabled={isPending}
               >
                 {isPending ? (

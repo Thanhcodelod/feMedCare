@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
 
   if (forgotMut.isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-info/5 flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="card-elevated p-8 text-center">
             <div className="w-16 h-16 rounded-md bg-success/10 flex items-center justify-center mx-auto mb-6">
@@ -38,7 +38,7 @@ export default function ForgotPasswordPage() {
               Không thấy email? Kiểm tra thư mục Spam hoặc thử lại sau vài phút.
             </p>
             <Link href="/login">
-              <Button variant="outline" className="rounded-xl h-10 w-full">
+              <Button variant="outline" className="h-10 w-full">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Quay lại đăng nhập
               </Button>
@@ -50,11 +50,11 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-info/5 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4 shadow-primary">
-            <Mail className="w-7 h-7 text-white" />
+          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4">
+            <Mail className="w-7 h-7 text-primary-foreground" />
           </div>
           <h1 className="text-2xl font-bold">Quên mật khẩu?</h1>
           <p className="text-muted-foreground text-sm mt-1">
@@ -83,7 +83,7 @@ export default function ForgotPasswordPage() {
 
             <Button
               type="submit"
-              className="w-full rounded-xl h-10 font-semibold"
+              className="w-full h-10 font-semibold"
               disabled={forgotMut.isPending}
             >
               {forgotMut.isPending ? (

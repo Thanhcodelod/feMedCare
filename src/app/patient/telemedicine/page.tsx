@@ -84,7 +84,7 @@ function PatientTelemedicineInner() {
       {error && (
         <div
           role="alert"
-          className="mb-4 flex items-start gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive"
+          className="mb-4 flex items-start gap-3 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive"
         >
           <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
           <div className="flex-1">
@@ -94,7 +94,7 @@ function PatientTelemedicineInner() {
           <Button
             size="sm"
             variant="outline"
-            className="rounded-lg h-8"
+            className="h-8"
             onClick={() => navigate.push("/patient/appointments")}
           >
             Về lịch khám
@@ -197,7 +197,7 @@ function PatientTelemedicineInner() {
               </span>
             </div>
 
-            <div className="absolute bottom-4 right-4 w-36 h-24 bg-gray-700 rounded-xl border-2 border-white/20 overflow-hidden">
+            <div className="absolute bottom-4 right-4 w-36 h-24 bg-gray-700 rounded-md border-2 border-white/20 overflow-hidden">
               <video ref={localVideoRef} autoPlay muted playsInline className={cn("w-full h-full object-cover", !camOn && "hidden")} />
               {!camOn && (
                 <div className="w-full h-full flex items-center justify-center">
@@ -209,10 +209,10 @@ function PatientTelemedicineInner() {
 
           <div className="card-elevated p-4">
             <div className="flex items-center justify-center gap-3">
-              <button onClick={toggleMic} className={cn("w-11 h-11 rounded-full flex items-center justify-center", micOn ? "bg-muted" : "bg-destructive text-white")}>
+              <button onClick={toggleMic} className={cn("w-11 h-11 rounded-full flex items-center justify-center", micOn ? "bg-muted" : "bg-destructive text-destructive-foreground")}>
                 {micOn ? <Mic className="w-5 h-5" /> : <MicOff className="w-5 h-5" />}
               </button>
-              <button onClick={toggleCam} className={cn("w-11 h-11 rounded-full flex items-center justify-center", camOn ? "bg-muted" : "bg-destructive text-white")}>
+              <button onClick={toggleCam} className={cn("w-11 h-11 rounded-full flex items-center justify-center", camOn ? "bg-muted" : "bg-destructive text-destructive-foreground")}>
                 {camOn ? <Video className="w-5 h-5" /> : <VideoOff className="w-5 h-5" />}
               </button>
               <button onClick={() => {}} className="w-11 h-11 rounded-full bg-muted flex items-center justify-center">
@@ -222,7 +222,7 @@ function PatientTelemedicineInner() {
                 <Maximize2 className="w-5 h-5" />
               </button>
               <div className="w-px h-8 bg-border mx-1" />
-              <Button onClick={handleEndCall} className="bg-destructive hover:bg-destructive/90 text-white rounded-full px-6 h-11 gap-2">
+              <Button onClick={handleEndCall} className="bg-destructive hover:bg-destructive/90 text-destructive-foreground px-6 h-11 gap-2">
                 <Phone className="w-4 h-4" />Kết thúc
               </Button>
             </div>
@@ -240,7 +240,7 @@ function PatientTelemedicineInner() {
             )}
             {messages.map((msg, idx) => (
               <div key={`${msg.id}-${idx}`} className={cn("flex", msg.senderId === user?.id ? "justify-end" : "justify-start")}>
-                <div className={cn("text-xs px-3 py-2 rounded-md max-w-[85%]", msg.senderId === user?.id ? "bg-primary text-white rounded-tr-sm" : "bg-muted text-foreground rounded-tl-sm")}>
+                <div className={cn("text-xs px-3 py-2 rounded-md max-w-[85%]", msg.senderId === user?.id ? "bg-primary text-primary-foreground rounded-tr-sm" : "bg-muted text-foreground rounded-tl-sm")}>
                   {msg.content}
                 </div>
               </div>
@@ -252,12 +252,12 @@ function PatientTelemedicineInner() {
               onChange={e => setChatInput(e.target.value)}
               onKeyDown={e => { if (e.key === "Enter" && canSend) { sendMessage(chatInput); setChatInput(""); } }}
               placeholder={canSend ? "Nhắn tin..." : "Đang chờ giới hạn tần suất..."}
-              className="text-xs h-8 rounded-xl"
+              className="text-xs h-8"
               disabled={!canSend}
             />
             <Button
               size="sm"
-              className="h-8 rounded-xl px-3"
+              className="h-8 px-3"
               disabled={!canSend}
               onClick={() => { sendMessage(chatInput); setChatInput(""); }}
             >

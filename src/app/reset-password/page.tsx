@@ -23,7 +23,7 @@ import {
 
 function InvalidLinkView() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-info/5 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="card-elevated p-8 text-center">
           <div className="w-16 h-16 rounded-md bg-destructive/10 flex items-center justify-center mx-auto mb-6">
@@ -35,10 +35,10 @@ function InvalidLinkView() {
           </p>
           <div className="space-y-2">
             <Link href="/forgot-password">
-              <Button className="w-full rounded-xl h-10">Yêu cầu link mới</Button>
+              <Button className="w-full h-10">Yêu cầu link mới</Button>
             </Link>
             <Link href="/login">
-              <Button variant="outline" className="w-full rounded-xl h-10">
+              <Button variant="outline" className="w-full h-10">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Quay lại đăng nhập
               </Button>
@@ -75,11 +75,11 @@ function ResetPasswordForm({ token }: { token: string }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-info/5 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4 shadow-primary">
-            <KeyRound className="w-7 h-7 text-white" />
+          <div className="w-14 h-14 rounded-md bg-primary flex items-center justify-center mx-auto mb-4">
+            <KeyRound className="w-7 h-7 text-primary-foreground" />
           </div>
           <h1 className="text-2xl font-bold">Đặt lại mật khẩu</h1>
           <p className="text-muted-foreground text-sm mt-1">
@@ -152,7 +152,7 @@ function ResetPasswordForm({ token }: { token: string }) {
 
             <Button
               type="submit"
-              className="w-full rounded-xl h-10 font-semibold"
+              className="w-full h-10 font-semibold"
               disabled={!canSubmit}
             >
               {resetMut.isPending ? (

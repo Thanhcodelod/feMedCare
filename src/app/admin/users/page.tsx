@@ -84,12 +84,12 @@ export default function AdminUsers() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={() => {}} className="rounded-xl gap-2 h-10 px-4 border-dashed">
+          <Button variant="outline" onClick={() => {}} className="gap-2 h-10 px-4 border-dashed">
             <Mail className="w-4 h-4" /> Gửi thông báo
           </Button>
           <Dialog open={openAddDoctor} onOpenChange={setOpenAddDoctor}>
             <DialogTrigger asChild>
-              <Button className="rounded-xl gap-2 h-10 px-4 shadow-lg shadow-primary/20">
+              <Button className="gap-2 h-10 px-4">
                 <UserPlus className="w-4 h-4" /> Thêm bác sĩ
               </Button>
             </DialogTrigger>
@@ -145,14 +145,14 @@ export default function AdminUsers() {
         </div>
       </div>
 
-      <div className="flex gap-1 mb-4 bg-muted/40 rounded-xl p-1 w-fit">
+      <div className="flex gap-1 mb-4 bg-muted/40 rounded-md p-1 w-fit">
         {[
           { value: "doctors" as Tab, label: `Bác sĩ (${doctorsData.length})`, badge: false },
           { value: "patients" as Tab, label: `Bệnh nhân (${patientsList.length})`, badge: false },
         ].map((t) => (
           <button key={t.value} onClick={() => setTab(t.value)}
-            className={cn("px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 whitespace-nowrap",
-              tab === t.value ? "bg-white shadow-sm ring-1 ring-black/5" : "text-muted-foreground hover:bg-white/50"
+            className={cn("px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5 whitespace-nowrap",
+              tab === t.value ? "bg-card ring-1 ring-border" : "text-muted-foreground hover:bg-card"
             )}
           >
             {t.label}
@@ -190,11 +190,11 @@ export default function AdminUsers() {
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2.5">
                     <div className="relative">
-                      <Avatar className="w-8 h-8 ring-2 ring-white">
+                      <Avatar className="w-8 h-8 ring-2 ring-card">
                         <AvatarImage src={d.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${d.id}`} />
                         <AvatarFallback className="text-xs bg-primary/10 text-primary">{d.fullName?.charAt(0)}</AvatarFallback>
                       </Avatar>
-                      <span className={cn("absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white",
+                      <span className={cn("absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-card",
                         d.verifyStatus === "VERIFIED" ? "bg-success" : "bg-muted-foreground"
                       )} />
                     </div>
@@ -217,7 +217,7 @@ export default function AdminUsers() {
                   <span className={cn("text-[11px] font-bold px-2 py-0.5 rounded-full inline-block min-w-[80px] text-center",
                     d.verifyStatus === "VERIFIED" ? "bg-success/10 text-success border border-success/20" : 
                     d.verifyStatus === "PENDING" ? "bg-warning/10 text-warning border border-warning/20" : 
-                    "bg-error/10 text-error border border-error/20"
+                    "bg-destructive/10 text-destructive border border-destructive/20"
                   )}>
                     {d.verifyStatus === "VERIFIED" ? "Đã duyệt" : d.verifyStatus === "PENDING" ? "Chờ duyệt" : "Từ chối"}
                   </span>
@@ -235,8 +235,8 @@ export default function AdminUsers() {
                         <CheckCircle2 className="w-4 h-4" /> Xác nhận
                       </Button>
                     )}
-                    <Button variant="ghost" size="icon" onClick={() => {}} className="w-8 h-8 rounded-xl"><Edit className="w-4 h-4 text-muted-foreground" /></Button>
-                    <Button variant="ghost" size="icon" className="w-8 h-8 rounded-xl text-destructive hover:text-destructive hover:bg-destructive/5"
+                    <Button variant="ghost" size="icon" onClick={() => {}} className="w-8 h-8"><Edit className="w-4 h-4 text-muted-foreground" /></Button>
+                    <Button variant="ghost" size="icon" className="w-8 h-8 text-destructive hover:text-destructive hover:bg-destructive/5"
                       onClick={() => {
                         setUserToDelete(d.userId || d.id);
                         setConfirmDeleteOpen(true);
@@ -255,7 +255,7 @@ export default function AdminUsers() {
               <tr key={p.id} className="border-b border-border/50 hover:bg-muted/20 text-balance">
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2.5">
-                    <Avatar className="w-8 h-8 ring-2 ring-white">
+                    <Avatar className="w-8 h-8 ring-2 ring-card">
                       <AvatarImage src={p.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${p.id}`} />
                       <AvatarFallback className="text-xs bg-success/10 text-success">{p.fullName?.charAt(0)}</AvatarFallback>
                     </Avatar>
@@ -270,8 +270,8 @@ export default function AdminUsers() {
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex gap-1 justify-end mr-4">
-                    <Button variant="ghost" size="icon" onClick={() => {}} className="w-8 h-8 rounded-xl"><Edit className="w-4 h-4 text-muted-foreground" /></Button>
-                    <Button variant="ghost" size="icon" className="w-8 h-8 rounded-xl text-destructive hover:text-destructive hover:bg-destructive/5"
+                    <Button variant="ghost" size="icon" onClick={() => {}} className="w-8 h-8"><Edit className="w-4 h-4 text-muted-foreground" /></Button>
+                    <Button variant="ghost" size="icon" className="w-8 h-8 text-destructive hover:text-destructive hover:bg-destructive/5"
                       onClick={() => {
                         setUserToDelete(p.userId || p.id);
                         setConfirmDeleteOpen(true);

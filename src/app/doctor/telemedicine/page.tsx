@@ -146,7 +146,7 @@ function DoctorTelemedicineInner() {
       {error && (
         <div
           role="alert"
-          className="mb-4 flex items-start gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive"
+          className="mb-4 flex items-start gap-3 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive"
         >
           <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
           <div className="flex-1">
@@ -156,7 +156,7 @@ function DoctorTelemedicineInner() {
           <Button
             size="sm"
             variant="outline"
-            className="rounded-lg h-8"
+            className="h-8"
             onClick={() => navigate.push("/doctor/appointments")}
           >
             Về lịch khám
@@ -282,7 +282,7 @@ function DoctorTelemedicineInner() {
             </div>
 
             {/* Self PIP */}
-            <div className="absolute bottom-4 right-4 w-36 h-24 bg-gray-700 rounded-xl border-2 border-white/20 overflow-hidden">
+            <div className="absolute bottom-4 right-4 w-36 h-24 bg-gray-700 rounded-md border-2 border-white/20 overflow-hidden">
               <video
                 ref={localVideoRef}
                 autoPlay
@@ -307,7 +307,7 @@ function DoctorTelemedicineInner() {
                   "w-11 h-11 rounded-full flex items-center justify-center transition-colors",
                   micOn
                     ? "bg-muted hover:bg-muted/80"
-                    : "bg-destructive text-white",
+                    : "bg-destructive text-destructive-foreground",
                 )}
               >
                 {micOn ? (
@@ -322,7 +322,7 @@ function DoctorTelemedicineInner() {
                   "w-11 h-11 rounded-full flex items-center justify-center transition-colors",
                   camOn
                     ? "bg-muted hover:bg-muted/80"
-                    : "bg-destructive text-white",
+                    : "bg-destructive text-destructive-foreground",
                 )}
               >
                 {camOn ? (
@@ -340,7 +340,7 @@ function DoctorTelemedicineInner() {
               <div className="w-px h-8 bg-border mx-1" />
               <Button
                 onClick={handleEndCall}
-                className="bg-destructive hover:bg-destructive/90 text-white rounded-full px-6 h-11 gap-2"
+                className="bg-destructive hover:bg-destructive/90 text-destructive-foreground rounded-md px-6 h-11 gap-2"
               >
                 <Phone className="w-4 h-4" />
                 Kết thúc
@@ -357,9 +357,9 @@ function DoctorTelemedicineInner() {
                 key={t}
                 onClick={() => setTab(t)}
                 className={cn(
-                  "flex-1 text-xs py-1.5 rounded-lg font-medium transition-colors",
+                  "flex-1 text-xs py-1.5 rounded-md font-medium transition-colors",
                   tab === t
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
@@ -389,7 +389,7 @@ function DoctorTelemedicineInner() {
                   size="sm"
                   variant="outline"
                   onClick={() => {}}
-                  className="w-full rounded-xl text-xs"
+                  className="w-full text-xs"
                 >
                   Xem hồ sơ đầy đủ
                 </Button>
@@ -405,9 +405,9 @@ function DoctorTelemedicineInner() {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Nhập ghi chú..."
-                  className="resize-none text-sm min-h-[200px] rounded-xl"
+                  className="resize-none text-sm min-h-[200px]"
                 />
-                <Button size="sm" onClick={() => {}} className="w-full rounded-xl">
+                <Button size="sm" onClick={() => {}} className="w-full">
                   Lưu ghi chú
                 </Button>
               </div>
@@ -430,7 +430,7 @@ function DoctorTelemedicineInner() {
                         className={cn(
                           "text-xs px-3 py-2 rounded-md max-w-[80%]",
                           msg.senderId === user?.id
-                            ? "bg-primary text-white rounded-tr-sm"
+                            ? "bg-primary text-primary-foreground rounded-tr-sm"
                             : "bg-muted text-foreground rounded-tl-sm",
                         )}
                       >
@@ -452,12 +452,12 @@ function DoctorTelemedicineInner() {
                     placeholder={
                       canSend ? "Nhắn tin..." : "Đang chờ giới hạn tần suất..."
                     }
-                    className="text-xs h-8 rounded-xl"
+                    className="text-xs h-8"
                     disabled={!canSend}
                   />
                   <Button
                     size="sm"
-                    className="h-8 rounded-xl px-3"
+                    className="h-8 px-3"
                     disabled={!canSend}
                     onClick={() => {
                       sendMessage(chatInput);

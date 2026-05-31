@@ -19,10 +19,10 @@ const Legend: any = dynamic(() => import("recharts").then((mod) => mod.Legend as
 import { TrendingUp, Users, Calendar, Video, Star } from "lucide-react";
 
 const satisfactionData = [
-  { name: "Rất hài lòng", value: 58, color: "hsl(142,71%,45%)" },
-  { name: "Hài lòng", value: 28, color: "hsl(221,83%,53%)" },
-  { name: "Bình thường", value: 10, color: "hsl(38,92%,50%)" },
-  { name: "Chưa hài lòng", value: 4, color: "hsl(0,84%,60%)" },
+  { name: "Rất hài lòng", value: 58, color: "hsl(var(--success))" },
+  { name: "Hài lòng", value: 28, color: "hsl(var(--info))" },
+  { name: "Bình thường", value: 10, color: "hsl(var(--warning))" },
+  { name: "Chưa hài lòng", value: 4, color: "hsl(var(--destructive))" },
 ];
 
 export default function DoctorAnalytics() {
@@ -66,15 +66,15 @@ export default function DoctorAnalytics() {
             <AreaChart data={chartData.patientGrowth}>
               <defs>
                 <linearGradient id="patientGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(221,83%,53%)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(221,83%,53%)" stopOpacity={0} />
+                  <stop offset="5%" stopColor="hsl(var(--info))" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="hsl(var(--info))" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(215,20%,92%)" vertical={false} />
-              <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(215,16%,55%)" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: "hsl(215,16%,55%)" }} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={{ background: "white", border: "1px solid hsl(215,20%,90%)", borderRadius: 10, fontSize: 12 }} />
-              <Area type="monotone" dataKey="patients" stroke="hsl(221,83%,53%)" strokeWidth={2} fill="url(#patientGrad)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
+              <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 6, fontSize: 12 }} />
+              <Area type="monotone" dataKey="patients" stroke="hsl(var(--info))" strokeWidth={2} fill="url(#patientGrad)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -85,11 +85,11 @@ export default function DoctorAnalytics() {
           <p className="text-xs text-muted-foreground mb-4">Tuần này</p>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={chartData.appointmentsByDay}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(215,20%,92%)" vertical={false} />
-              <XAxis dataKey="day" tick={{ fontSize: 11, fill: "hsl(215,16%,55%)" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: "hsl(215,16%,55%)" }} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={{ background: "white", border: "1px solid hsl(215,20%,90%)", borderRadius: 10, fontSize: 12 }} />
-              <Bar dataKey="appointments" fill="hsl(142,71%,45%)" radius={[4, 4, 0, 0]} />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <XAxis dataKey="day" tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
+              <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 6, fontSize: 12 }} />
+              <Bar dataKey="appointments" fill="hsl(var(--success))" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -144,7 +144,7 @@ export default function DoctorAnalytics() {
                   <span className="text-xs font-semibold">{item.value}%</span>
                 </div>
               ))}
-              <div className="mt-2 bg-muted/40 rounded-xl p-3">
+              <div className="mt-2 bg-muted/40 rounded-md p-3">
                 <p className="text-xs text-muted-foreground">Tổng ca hoàn thành</p>
                 <p className="text-xl font-bold text-primary">{completedCount}</p>
               </div>

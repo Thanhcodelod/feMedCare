@@ -44,7 +44,7 @@ export function HealthMetricsCharts() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="border-none shadow-lg">
+        <Card className="border border-border">
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle className="text-sm font-bold flex items-center gap-2">
@@ -69,17 +69,17 @@ export function HealthMetricsCharts() {
                   <CartesianGrid
                     strokeDasharray="3 3"
                     vertical={false}
-                    stroke="#f0f0f0"
+                    stroke="hsl(var(--border))"
                   />
                   <XAxis
                     dataKey="date"
-                    stroke="#888"
+                    stroke="hsl(var(--muted-foreground))"
                     fontSize={10}
                     tickLine={false}
                     axisLine={false}
                   />
                   <YAxis
-                    stroke="#888"
+                    stroke="hsl(var(--muted-foreground))"
                     fontSize={10}
                     tickLine={false}
                     axisLine={false}
@@ -87,17 +87,17 @@ export function HealthMetricsCharts() {
                   />
                   <Tooltip
                     contentStyle={{
-                      borderRadius: "12px",
-                      border: "none",
-                      boxShadow: "0 8px 30px rgba(0,0,0,0.1)",
+                      borderRadius: "6px",
+                      border: "1px solid hsl(var(--border))",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.06)",
                     }}
                   />
                   <Line
                     type="monotone"
                     dataKey="weight"
-                    stroke="#10b981"
+                    stroke="hsl(var(--success))"
                     strokeWidth={3}
-                    dot={{ r: 4, fill: "#10b981" }}
+                    dot={{ r: 4, fill: "hsl(var(--success))" }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -105,11 +105,11 @@ export function HealthMetricsCharts() {
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-lg">
+        <Card className="border border-border">
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle className="text-sm font-bold flex items-center gap-2">
-                <Heart className="w-4 h-4 text-red-500" /> Huyết áp (mmHg)
+                <Heart className="w-4 h-4 text-destructive" /> Huyết áp (mmHg)
               </CardTitle>
               <CardDescription>Chỉ số tâm thu và tâm trương</CardDescription>
             </div>
@@ -129,26 +129,26 @@ export function HealthMetricsCharts() {
                     <linearGradient id="colorSys" x1="0" y1="0" x2="0" y2="1">
                       <stop
                         offset="5%"
-                        stopColor="#ef4444"
+                        stopColor="hsl(var(--destructive))"
                         stopOpacity={0.1}
                       />
-                      <stop offset="95%" stopColor="#ef4444" stopOpacity={0} />
+                      <stop offset="95%" stopColor="hsl(var(--destructive))" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid
                     strokeDasharray="3 3"
                     vertical={false}
-                    stroke="#f0f0f0"
+                    stroke="hsl(var(--border))"
                   />
                   <XAxis
                     dataKey="date"
-                    stroke="#888"
+                    stroke="hsl(var(--muted-foreground))"
                     fontSize={10}
                     tickLine={false}
                     axisLine={false}
                   />
                   <YAxis
-                    stroke="#888"
+                    stroke="hsl(var(--muted-foreground))"
                     fontSize={10}
                     tickLine={false}
                     axisLine={false}
@@ -156,15 +156,15 @@ export function HealthMetricsCharts() {
                   />
                   <Tooltip
                     contentStyle={{
-                      borderRadius: "12px",
-                      border: "none",
-                      boxShadow: "0 8px 30px rgba(0,0,0,0.1)",
+                      borderRadius: "6px",
+                      border: "1px solid hsl(var(--border))",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.06)",
                     }}
                   />
                   <Area
                     type="monotone"
                     dataKey="sys"
-                    stroke="#ef4444"
+                    stroke="hsl(var(--destructive))"
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#colorSys)"
@@ -173,7 +173,7 @@ export function HealthMetricsCharts() {
                   <Area
                     type="monotone"
                     dataKey="dia"
-                    stroke="#3b82f6"
+                    stroke="hsl(var(--info))"
                     strokeWidth={2}
                     fillOpacity={0}
                     name="Tâm trương"
@@ -186,52 +186,52 @@ export function HealthMetricsCharts() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="border-none shadow-lg">
+        <Card className="border border-border">
           <CardHeader>
             <CardTitle className="text-sm font-bold">
               Dị ứng & Phản ứng
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
-            <Badge variant="destructive" className="rounded-full px-4 py-1">
+            <Badge variant="destructive" className="rounded-md px-4 py-1">
               Hải sản (Nặng)
             </Badge>
-            <Badge variant="destructive" className="rounded-full px-4 py-1">
+            <Badge variant="destructive" className="rounded-md px-4 py-1">
               Phấn hoa
             </Badge>
-            <Badge variant="destructive" className="rounded-full px-4 py-1">
+            <Badge variant="destructive" className="rounded-md px-4 py-1">
               Penicillin
             </Badge>
             <Button
               variant="outline"
               size="sm"
-              className="rounded-full border-dashed"
+              className="border-dashed"
             >
               <PlusCircle className="w-3.5 h-3.5 mr-1" /> Thêm mới
             </Button>
           </CardContent>
         </Card>
-        <Card className="border-none shadow-lg">
+        <Card className="border border-border">
           <CardHeader>
             <CardTitle className="text-sm font-bold">Bệnh mạn tính</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
             <Badge
               variant="secondary"
-              className="bg-primary/10 text-primary border-none rounded-full px-4 py-1"
+              className="bg-primary/10 text-primary border-none rounded-md px-4 py-1"
             >
               Viêm xoang
             </Badge>
             <Badge
               variant="secondary"
-              className="bg-primary/10 text-primary border-none rounded-full px-4 py-1"
+              className="bg-primary/10 text-primary border-none rounded-md px-4 py-1"
             >
               Đau dạ dày
             </Badge>
             <Button
               variant="outline"
               size="sm"
-              className="rounded-full border-dashed"
+              className="border-dashed"
             >
               <PlusCircle className="w-3.5 h-3.5 mr-1" /> Thêm mới
             </Button>

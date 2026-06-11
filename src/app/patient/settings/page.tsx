@@ -207,14 +207,14 @@ export default function PatientSettings() {
                 <div className="p-3 bg-card rounded-md border border-border text-left">
                   <div className="flex items-center gap-2 mb-1">
                     <Droplets className="w-3.5 h-3.5 text-destructive" />
-                    <span className="text-[10px] text-muted-foreground uppercase font-bold">Nhóm máu</span>
+                    <span className="text-[14px] text-muted-foreground uppercase font-bold">Nhóm máu</span>
                   </div>
                   <span className="text-sm font-bold">{profile?.bloodType || "O+"}</span>
                 </div>
                 <div className="p-3 bg-card rounded-md border border-border text-left">
                   <div className="flex items-center gap-2 mb-1">
                     <Scale className="w-3.5 h-3.5 text-info" />
-                    <span className="text-[10px] text-muted-foreground uppercase font-bold">BMI</span>
+                    <span className="text-[14px] text-muted-foreground uppercase font-bold">BMI</span>
                   </div>
                   <span className="text-sm font-bold">22.5 (Bình thường)</span>
                 </div>
@@ -504,19 +504,19 @@ export default function PatientSettings() {
                       <div className="relative pl-10">
                          <div className="absolute left-[-11px] top-1 w-5 h-5 rounded-full bg-primary ring-4 ring-primary/10" />
                          <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-bold text-primary uppercase tracking-wider">Tháng 08 / 2023</span>
+                            <span className="text-[14px] font-bold text-primary uppercase tracking-wider">Tháng 08 / 2023</span>
                             <h4 className="font-bold text-lg">Phẫu thuật mổ ruột thừa</h4>
                             <p className="text-sm text-muted-foreground max-w-2xl">Thực hiện tại Bệnh viện Đa khoa thành phố. Kỹ thuật nội soi, hồi phục nhanh sau 10 ngày.</p>
                             <div className="flex gap-2 mt-2">
-                               <Badge variant="outline" className="text-[10px] rounded-lg">Cấp cứu</Badge>
-                               <Badge variant="outline" className="text-[10px] rounded-lg">Hậu phẫu</Badge>
+                               <Badge variant="outline" className="text-[14px] rounded-lg">Cấp cứu</Badge>
+                               <Badge variant="outline" className="text-[14px] rounded-lg">Hậu phẫu</Badge>
                             </div>
                          </div>
                       </div>
                       <div className="relative pl-10">
                          <div className="absolute left-[-11px] top-1 w-5 h-5 rounded-full bg-primary/40 ring-4 ring-primary/5" />
                          <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Năm 2021</span>
+                            <span className="text-[14px] font-bold text-muted-foreground uppercase tracking-wider">Năm 2021</span>
                             <h4 className="font-bold text-lg">Điều trị sốt xuất huyết</h4>
                             <p className="text-sm text-muted-foreground max-w-2xl">Điều trị nội trú 7 ngày tại trung tâm y tế quận. Không để lại di chứng.</p>
                          </div>
@@ -549,11 +549,11 @@ export default function PatientSettings() {
                         </div>
                         <div className="flex justify-between items-end mt-12 relative">
                            <div className="space-y-1">
-                              <span className="text-[10px] opacity-60 uppercase font-bold tracking-widest">Card Number</span>
+                              <span className="text-[14px] opacity-60 uppercase font-bold tracking-widest">Card Number</span>
                               <p className="text-xl font-mono tracking-widest">8010 •••• •••• 1234</p>
                            </div>
                            <div className="text-right space-y-1">
-                              <span className="text-[10px] opacity-60 uppercase font-bold tracking-widest">Expires</span>
+                              <span className="text-[14px] opacity-60 uppercase font-bold tracking-widest">Expires</span>
                               <p className="text-sm font-bold">12 / 2025</p>
                            </div>
                         </div>

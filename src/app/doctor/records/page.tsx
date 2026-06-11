@@ -187,7 +187,7 @@ export default function DoctorRecordsArchive() {
                           {record.diagnosis}
                         </span>
                         {record.diagnostic_code && (
-                          <span className="text-[10px] text-muted-foreground uppercase tracking-tight">
+                          <span className="text-[14px] text-muted-foreground uppercase tracking-tight">
                             ICD-10: {record.diagnostic_code}
                           </span>
                         )}
@@ -195,7 +195,7 @@ export default function DoctorRecordsArchive() {
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
+                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-[14px] font-bold text-primary">
                           {patientName(record).charAt(0)}
                         </div>
                         <span className="text-sm">{patientName(record)}</span>
@@ -203,7 +203,7 @@ export default function DoctorRecordsArchive() {
                     </TableCell>
                     <TableCell>
                       {rxLines.length === 0 ? (
-                        <span className="text-[11px] italic text-muted-foreground">
+                        <span className="text-[15px] italic text-muted-foreground">
                           Không kê đơn
                         </span>
                       ) : (
@@ -212,13 +212,13 @@ export default function DoctorRecordsArchive() {
                             <Badge
                               key={i}
                               variant="secondary"
-                              className="text-[10px] font-normal rounded-md px-1.5 py-0"
+                              className="text-[14px] font-normal rounded-md px-1.5 py-0"
                             >
                               {firstToken(line)}
                             </Badge>
                           ))}
                           {rxLines.length > 2 && (
-                            <span className="text-[10px] text-muted-foreground">
+                            <span className="text-[14px] text-muted-foreground">
                               +{rxLines.length - 2} khác
                             </span>
                           )}

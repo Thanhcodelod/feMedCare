@@ -112,7 +112,7 @@ export default function NotificationsPage() {
                   <h4 className={cn("text-sm font-bold truncate", !n.read ? "text-foreground" : "text-muted-foreground")}>
                     {n.title}
                   </h4>
-                  <span className="text-[10px] text-muted-foreground uppercase font-bold tracking-tight">{n.timestamp}</span>
+                  <span className="text-[14px] text-muted-foreground uppercase font-bold tracking-tight">{n.timestamp}</span>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                   {n.body}

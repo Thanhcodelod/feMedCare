@@ -190,7 +190,7 @@ export default function PatientAppointments() {
             <div className="flex flex-col items-end gap-2 flex-shrink-0">
               <StatusBadge status={appt.status.toLowerCase() as any} />
               {overdue && (
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-warning/10 text-warning">
+                <span className="text-[14px] font-medium px-2 py-0.5 rounded-full bg-warning/10 text-warning">
                   Quá hạn
                 </span>
               )}

@@ -200,7 +200,7 @@ export default function AdminUsers() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">{d.fullName}</p>
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{d.email}</p>
+                      <p className="text-[14px] text-muted-foreground uppercase tracking-wider">{d.email}</p>
                     </div>
                   </div>
                 </td>
@@ -214,7 +214,7 @@ export default function AdminUsers() {
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className={cn("text-[11px] font-bold px-2 py-0.5 rounded-full inline-block min-w-[80px] text-center",
+                  <span className={cn("text-[15px] font-bold px-2 py-0.5 rounded-full inline-block min-w-[80px] text-center",
                     d.verifyStatus === "VERIFIED" ? "bg-success/10 text-success border border-success/20" : 
                     d.verifyStatus === "PENDING" ? "bg-warning/10 text-warning border border-warning/20" : 
                     "bg-destructive/10 text-destructive border border-destructive/20"
@@ -259,7 +259,7 @@ export default function AdminUsers() {
                       <AvatarImage src={p.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${p.id}`} />
                       <AvatarFallback className="text-xs bg-success/10 text-success">{p.fullName?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <div><p className="text-sm font-semibold">{p.fullName}</p><p className="text-[10px] text-muted-foreground uppercase tracking-wider font-mono">{p.id.substring(0,8)}</p></div>
+                    <div><p className="text-sm font-semibold">{p.fullName}</p><p className="text-[14px] text-muted-foreground uppercase tracking-wider font-mono">{p.id.substring(0,8)}</p></div>
                   </div>
                 </td>
                 <td className="px-4 py-3 text-xs text-muted-foreground">{p.email}</td>

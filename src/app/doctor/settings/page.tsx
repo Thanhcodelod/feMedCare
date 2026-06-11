@@ -145,15 +145,15 @@ export default function DoctorSettings() {
               <div className="flex justify-center gap-6 border-t border-white/10 pt-6">
                 <div className="text-center">
                   <p className="text-xl font-bold">{profile?.averageRating || 5.0}</p>
-                  <p className="text-[10px] opacity-70 uppercase font-bold tracking-tight">Đánh giá</p>
+                  <p className="text-[14px] opacity-70 uppercase font-bold tracking-tight">Đánh giá</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold">{profile?.totalPatients || 0}</p>
-                  <p className="text-[10px] opacity-70 uppercase font-bold tracking-tight">Bệnh nhân</p>
+                  <p className="text-[14px] opacity-70 uppercase font-bold tracking-tight">Bệnh nhân</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold">{profile?.yearsOfExperience || 0}</p>
-                  <p className="text-[10px] opacity-70 uppercase font-bold tracking-tight">Kinh nghiệm</p>
+                  <p className="text-[14px] opacity-70 uppercase font-bold tracking-tight">Kinh nghiệm</p>
                 </div>
               </div>
             </CardContent>
@@ -401,7 +401,7 @@ export default function DoctorSettings() {
                           <div className="w-8 h-8 rounded-full bg-card flex items-center justify-center"><Laptop className="w-4 h-4 text-muted-foreground" /></div>
                           <div>
                              <p className="text-xs font-bold">MacBook Pro M2</p>
-                             <p className="text-[10px] text-muted-foreground">Hà Nội, Việt Nam · Đang online</p>
+                             <p className="text-[14px] text-muted-foreground">Hà Nội, Việt Nam · Đang online</p>
                           </div>
                        </div>
                        <ChevronRight className="w-4 h-4 text-muted-foreground" />

@@ -170,7 +170,7 @@ export function CheckInDialog({ item, open, onOpenChange }: CheckInDialogProps) 
                 className="resize-none text-sm min-h-[72px] rounded-xl"
                 maxLength={NOTE_MAX}
               />
-              <p className="text-[11px] text-muted-foreground text-right">
+              <p className="text-[15px] text-muted-foreground text-right">
                 {note.length}/{NOTE_MAX}
               </p>
             </div>

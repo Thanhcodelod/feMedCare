@@ -184,7 +184,7 @@ export default function DoctorPatients() {
                     {p.latestDiagnosis}
                   </p>
                 </div>
-                <span className="text-[10px] text-muted-foreground font-medium px-2 py-0.5 rounded-full bg-muted">
+                <span className="text-[14px] text-muted-foreground font-medium px-2 py-0.5 rounded-full bg-muted">
                   {p.visitCount} lần
                 </span>
               </div>
@@ -292,7 +292,7 @@ export default function DoctorPatients() {
                             <p className="text-sm font-semibold">
                               {rec.diagnosis}
                               {rec.diagnostic_code && (
-                                <span className="ml-2 text-[10px] text-muted-foreground uppercase tracking-tight">
+                                <span className="ml-2 text-[14px] text-muted-foreground uppercase tracking-tight">
                                   ICD-10: {rec.diagnostic_code}
                                 </span>
                               )}

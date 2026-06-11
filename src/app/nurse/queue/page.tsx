@@ -214,7 +214,7 @@ export default function NurseQueuePage() {
                         –{item.end_time}
                       </span>
                       {overdue && (
-                        <p className="text-[11px] text-warning mt-0.5 font-medium">
+                        <p className="text-[15px] text-warning mt-0.5 font-medium">
                           Quá giờ &gt; 15 phút
                         </p>
                       )}

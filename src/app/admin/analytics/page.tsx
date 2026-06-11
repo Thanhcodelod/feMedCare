@@ -83,8 +83,8 @@ export default function AdminAnalytics() {
                 <div className="flex items-center justify-between mb-6">
                    <h3 className="font-bold text-foreground">Doanh thu & Lịch khám</h3>
                    <div className="flex gap-1 bg-muted p-1 rounded-md">
-                      <Button variant="ghost" size="sm" className="h-7 text-[10px] px-2 rounded-md bg-card">Tháng</Button>
-                      <Button variant="ghost" size="sm" className="h-7 text-[10px] px-2 rounded-md">Tuần</Button>
+                      <Button variant="ghost" size="sm" className="h-7 text-[14px] px-2 rounded-md bg-card">Tháng</Button>
+                      <Button variant="ghost" size="sm" className="h-7 text-[14px] px-2 rounded-md">Tuần</Button>
                    </div>
                 </div>
                 <ResponsiveContainer width="100%" height={300}>
@@ -149,13 +149,13 @@ export default function AdminAnalytics() {
                             </div>
                             <div>
                                <p className="text-sm font-bold text-foreground">{doc.name}</p>
-                               <p className="text-[10px] text-muted-foreground uppercase">{doc.spec}</p>
+                               <p className="text-[14px] text-muted-foreground uppercase">{doc.spec}</p>
                             </div>
                          </div>
                          <div className="text-right flex items-center gap-8">
                             <div>
                                <p className="text-sm font-bold">{doc.appointments}</p>
-                               <p className="text-[10px] text-success font-bold">{doc.growth}</p>
+                               <p className="text-[14px] text-success font-bold">{doc.growth}</p>
                             </div>
                             <div className="flex items-center gap-1 text-warning">
                                <span className="text-sm font-bold">{doc.rating}</span>

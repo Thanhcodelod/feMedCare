@@ -13,6 +13,11 @@
 
 @layer base {
   :root {
+    /* Typography — Times New Roman across every role (body, display, mono) */
+    --font-sans: "Times New Roman", Times, serif;
+    --font-display: "Times New Roman", Times, serif;
+    --font-mono: "Times New Roman", Times, serif;
+
     /* Surface — cool neutral light, pairs with the blue brand */
     --background: 210 22% 97%;
     --foreground: 200 30% 12%;
@@ -117,26 +122,25 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    /* Inter Tight from next/font; serif/mono via CSS vars below. */
-    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    /* Times New Roman across the UI via --font-sans. */
+    font-family: var(--font-sans), Times, serif;
     /* Subtle ink-on-paper texture without busy patterns. */
     background-image:
       radial-gradient(hsl(210 16% 82% / 0.4) 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: -12px -12px;
-    font-feature-settings: "ss01", "cv11"; /* InterTight stylistic alts */
   }
 
-  /* Headings use serif sparingly — H1 only by default. */
+  /* Headings — Times New Roman like the rest of the UI. */
   h1 {
-    font-family: var(--font-display), Georgia, serif;
+    font-family: var(--font-display), "Times New Roman", Times, serif;
     font-weight: 500;
     letter-spacing: -0.015em;
     @apply tracking-tight;
   }
 
   h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans), sans-serif;
+    font-family: var(--font-sans), "Times New Roman", Times, serif;
     @apply font-semibold tracking-tight;
   }
 
@@ -146,7 +150,18 @@
   }
 
   code, kbd, samp, pre {
-    font-family: var(--font-mono), "SF Mono", Consolas, monospace;
+    font-family: var(--font-mono), "Times New Roman", Times, serif;
+  }
+
+  /*
+   * Guarantee Times New Roman everywhere. Body inheritance covers most
+   * text, but form controls, placeholders and SVG/chart text do not inherit
+   * font-family by default — pin them explicitly so nothing falls back.
+   */
+  button, input, optgroup, select, textarea,
+  ::placeholder,
+  svg text, svg tspan {
+    font-family: var(--font-sans), "Times New Roman", Times, serif;
   }
 }
 
@@ -227,7 +242,7 @@
 
   /* Editorial section heading — small caps, hairline rule underneath. */
   .section-title {
-    @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground;
+    @apply text-[14px] font-semibold uppercase tracking-[0.08em] text-muted-foreground;
   }
 
   /* Data row — for tables that should feel clinical not card-y. */

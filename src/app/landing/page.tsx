@@ -124,7 +124,7 @@ export default function LandingPage() {
                       </div>
                       <div>
                          <p className="text-xs font-bold text-foreground">Cuộc gọi trực tuyến</p>
-                         <p className="text-[10px] text-muted-foreground text-nowrap">Đang kết nối bác sĩ...</p>
+                         <p className="text-[14px] text-muted-foreground text-nowrap">Đang kết nối bác sĩ...</p>
                       </div>
                    </div>
                 </div>
@@ -136,7 +136,7 @@ export default function LandingPage() {
                       </div>
                       <div>
                          <p className="text-xs font-bold text-foreground">Uu tú hàng đầu</p>
-                         <p className="text-[10px] text-muted-foreground">Xếp hạng 5 sao</p>
+                         <p className="text-[14px] text-muted-foreground">Xếp hạng 5 sao</p>
                       </div>
                    </div>
                 </div>
@@ -283,29 +283,10 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            <div>
-              <h5 className="font-bold mb-6">Tải ứng dụng</h5>
-              <div className="space-y-3">
-                 <div className="bg-slate-800 p-3 rounded-md flex items-center gap-3 cursor-pointer hover:bg-slate-700 transition-colors border border-slate-700">
-                    <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center"><Smartphone className="w-4 h-4" /></div>
-                    <div>
-                       <p className="text-[10px] text-muted-foreground font-bold uppercase">Download on the</p>
-                       <p className="text-sm font-bold">App Store</p>
-                    </div>
-                 </div>
-                 <div className="bg-slate-800 p-3 rounded-md flex items-center gap-3 cursor-pointer hover:bg-slate-700 transition-colors border border-slate-700">
-                    <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center"><Smartphone className="w-4 h-4" /></div>
-                    <div>
-                       <p className="text-[10px] text-muted-foreground font-bold uppercase">Get it on</p>
-                       <p className="text-sm font-bold">Google Play</p>
-                    </div>
-                 </div>
-              </div>
-            </div>
           </div>
           
           <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground text-xs">
-            <p>© 2026 MedCare ClinicFlow Connect. All rights reserved.</p>
+            <p>© 2026 MedCare. All rights reserved.</p>
             <div className="flex gap-6">
                <Link href="#" className="hover:text-white transition-colors">Facebook</Link>
                <Link href="#" className="hover:text-white transition-colors">Twitter</Link>

@@ -210,7 +210,7 @@ function RecordCard({ record }: { record: MedicalRecord }) {
           <div>
             <h3 className="font-semibold">{record.diagnosis}</h3>
             {record.diagnostic_code && (
-              <p className="text-[10px] text-muted-foreground uppercase tracking-tight mt-0.5">
+              <p className="text-[14px] text-muted-foreground uppercase tracking-tight mt-0.5">
                 ICD-10: {record.diagnostic_code}
               </p>
             )}
@@ -232,7 +232,7 @@ function RecordCard({ record }: { record: MedicalRecord }) {
               {type && (
                 <Badge
                   variant={type === "ONLINE" ? "default" : "secondary"}
-                  className="rounded-md text-[10px] px-1.5 py-0"
+                  className="rounded-md text-[14px] px-1.5 py-0"
                 >
                   {type}
                 </Badge>

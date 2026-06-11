@@ -83,23 +83,23 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        sans: ["var(--font-sans)", "Times New Roman", "Times", "serif"],
+        display: ["var(--font-display)", "Times New Roman", "Times", "serif"],
+        mono: ["var(--font-mono)", "Times New Roman", "Times", "serif"],
       },
       fontSize: {
-        // Tight, intentional scale. Page bodies should read at 13-14px,
-        // not 16px SaaS-blog feel. Headings use serif via .font-display.
-        "2xs": ["10px", { lineHeight: "1.3", letterSpacing: "0.02em" }],
-        xs: ["11px", { lineHeight: "1.45" }],
-        sm: ["13px", { lineHeight: "1.5" }],
-        base: ["14px", { lineHeight: "1.55" }],
-        lg: ["16px", { lineHeight: "1.5" }],
-        xl: ["18px", { lineHeight: "1.45" }],
-        "2xl": ["22px", { lineHeight: "1.3" }],
-        "3xl": ["28px", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
-        "4xl": ["36px", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        "5xl": ["48px", { lineHeight: "1.05", letterSpacing: "-0.025em" }],
+        // Large, roomy scale — body reads at 18px. Bumped well above the
+        // original tight scale per request; headings stay serif.
+        "2xs": ["13px", { lineHeight: "1.3", letterSpacing: "0.02em" }],
+        xs: ["15px", { lineHeight: "1.45" }],
+        sm: ["17px", { lineHeight: "1.5" }],
+        base: ["18px", { lineHeight: "1.55" }],
+        lg: ["21px", { lineHeight: "1.5" }],
+        xl: ["24px", { lineHeight: "1.45" }],
+        "2xl": ["30px", { lineHeight: "1.3" }],
+        "3xl": ["38px", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        "4xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "5xl": ["62px", { lineHeight: "1.05", letterSpacing: "-0.025em" }],
       },
       boxShadow: {
         // Replace fluffy SaaS shadows with hairline-only elevation.

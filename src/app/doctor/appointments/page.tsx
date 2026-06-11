@@ -436,7 +436,7 @@ export default function DoctorAppointments() {
                 rows={3}
                 maxLength={COMPLETE_APPOINTMENT_LIMITS.diagnosis}
               />
-              <p className="text-[11px] text-muted-foreground text-right mt-1">
+              <p className="text-[15px] text-muted-foreground text-right mt-1">
                 {diagnosis.length}/{COMPLETE_APPOINTMENT_LIMITS.diagnosis}
               </p>
             </div>
@@ -501,7 +501,7 @@ export default function DoctorAppointments() {
                 disabled={noPrescription}
               />
               {!noPrescription && (
-                <p className="text-[11px] text-muted-foreground text-right mt-1">
+                <p className="text-[15px] text-muted-foreground text-right mt-1">
                   {prescription.length}/
                   {COMPLETE_APPOINTMENT_LIMITS.prescription}
                 </p>

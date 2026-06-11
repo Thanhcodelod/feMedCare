@@ -67,9 +67,6 @@ export default function LandingPage() {
       <section className="pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden relative">
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 relative z-10 text-center lg:text-left">
-            <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20 px-4 py-1 rounded-full text-sm font-medium">
-              Nền tảng chăm sóc sức khỏe 4.0
-            </Badge>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
               Chăm sóc sức khỏe <br />
               <span className="text-primary">trong tầm tay</span> của bạn
@@ -81,11 +78,6 @@ export default function LandingPage() {
               <Link href="/login">
                 <Button size="lg" className="px-8 h-14 text-lg bg-primary hover:bg-primary/90">
                   Đặt lịch khám ngay
-                </Button>
-              </Link>
-              <Link href="/login">
-                <Button size="lg" variant="outline" className="px-8 h-14 text-lg border-2 hover:bg-muted">
-                  Tải ứng dụng
                 </Button>
               </Link>
             </div>

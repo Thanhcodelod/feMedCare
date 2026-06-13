@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { StatusBadge } from "@/components/shared/StatusBadge";
+import { AppointmentPaymentBadge } from "@/components/shared/PaymentStatusBadge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -20,7 +21,7 @@ import {
   XCircle,
   Mail,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   COMPLETE_APPOINTMENT_LIMITS,
@@ -327,7 +328,10 @@ export default function DoctorAppointments() {
                     </p>
                   </td>
                   <td className="px-4 py-3">
-                    <StatusBadge status={appt.status.toLowerCase() as any} />
+                    <div className="flex flex-col gap-1">
+                      <StatusBadge status={appt.status.toLowerCase() as any} />
+                      <AppointmentPaymentBadge appointment={appt} />
+                    </div>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1.5">

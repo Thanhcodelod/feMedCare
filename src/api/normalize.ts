@@ -172,6 +172,7 @@ export function normalizeAppointment(item: Raw): Appointment {
     patientAvatar: item.patient?.profile?.avatar_url || "",
     doctorId: item.doctor?.id || "",
     doctorName: item.doctor?.profile?.full_name || "",
+    doctorAvatar: item.doctor?.profile?.avatar_url || "",
     doctorSpecialization: item.doctor?.specialization || "",
     date: item.appointment_date ? String(item.appointment_date).split("T")[0] : "",
     startTime: item.start_time || "",

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { reviewService } from "@/api/review";
 import { DOCTORS_KEY } from "@/hooks/useDoctors";
 import { APPOINTMENTS_KEY } from "@/hooks/useAppointments";

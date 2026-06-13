@@ -1,7 +1,8 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useState } from "react";
@@ -39,12 +40,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <AuthHydrator />
-        {children}
-        <Toaster />
-        <Sonner />
-      </TooltipProvider>
+      <MantineProvider>
+        <Notifications position="top-right" zIndex={9999} />
+        <TooltipProvider>
+          <AuthHydrator />
+          {children}
+          <Toaster />
+        </TooltipProvider>
+      </MantineProvider>
     </QueryClientProvider>
   );
 }

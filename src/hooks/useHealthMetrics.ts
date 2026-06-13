@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { healthMetricService } from "@/api/healthMetric";
 import { useAuthHydration } from "@/hooks/useAuthHydration";
 import type { CreateHealthMetricPayload } from "@/types/api";

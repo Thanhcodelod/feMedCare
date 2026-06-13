@@ -16,6 +16,8 @@ export interface RegisterPayload {
   email: string;
   password: string;
   phone?: string;
+  dateOfBirth?: string;
+  gender?: "MALE" | "FEMALE" | "OTHER";
 }
 
 export interface RegisterDoctorPayload {
@@ -157,6 +159,7 @@ export interface Appointment {
   patientAvatar?: string;
   doctorId: string;
   doctorName: string;
+  doctorAvatar?: string;
   doctorSpecialization?: string;
   date: string;
   startTime: string;
@@ -391,7 +394,7 @@ export interface UpdateProfileMePayload {
   phone?: string;
   avatarUrl?: string;
   dateOfBirth?: string;
-  gender?: "MALE" | "FEMALE";
+  gender?: "MALE" | "FEMALE" | "OTHER";
   address?: string;
 }
 

@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { leaveService } from "@/api/leave";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import type { CreateLeaveRequestPayload, UpdateLeaveStatusPayload } from "@/types/api";
 
 export const useMyLeaves = () => {

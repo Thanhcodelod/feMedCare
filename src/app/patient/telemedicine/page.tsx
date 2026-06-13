@@ -12,7 +12,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/utils/utils";
 import { useTelemedicine } from "@/hooks/useTelemedicine";
 import { useAuthStore } from "@/redux/authStore";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 
 function formatDuration(s: number) {
   const m = Math.floor(s / 60);

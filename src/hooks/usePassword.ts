@@ -2,7 +2,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { authService } from "@/api/auth";
 import { useAuthStore } from "@/redux/authStore";
 import { extractApiError, formatRetryAfter } from "@/utils/error";

@@ -10,6 +10,7 @@ import {
   useCancelAppointment,
 } from "@/hooks/useAppointments";
 import { StatusBadge } from "@/components/shared/StatusBadge";
+import { AppointmentPaymentBadge } from "@/components/shared/PaymentStatusBadge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ReviewDialog } from "@/components/shared/ReviewDialog";
 import type { Appointment } from "@/types/api";
@@ -39,9 +40,6 @@ function apptStartMs(a: Appointment): number {
   return Number.isNaN(d.getTime()) ? 0 : d.getTime();
 }
 
-/** "Sắp tới" = CONFIRMED/IN_PROGRESS AND start time still in the future.
- *  Past CONFIRMED slots stay in "Tất cả" (BE flips them to NO_SHOW
- *  later via cron) but are visually marked as overdue. */
 function isUpcoming(a: Appointment, now: number): boolean {
   if (a.status !== "CONFIRMED" && a.status !== "IN_PROGRESS") return false;
   return apptStartMs(a) >= now;
@@ -75,8 +73,7 @@ export default function PatientAppointments() {
       if (activeTab === "UPCOMING") return isUpcoming(a, now);
       return a.status === activeTab;
     })
-    // Newest activity first: sort by appointment start desc so the most
-    // relevant items are on top regardless of tab.
+
     .sort((a, b) => apptStartMs(b) - apptStartMs(a));
 
   return (
@@ -155,7 +152,11 @@ export default function PatientAppointments() {
           >
             <Avatar className="w-12 h-12 flex-shrink-0">
               <AvatarImage
-                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${appt.doctorId}`}
+                src={
+                  appt.doctorAvatar ||
+                  `https://api.dicebear.com/7.x/avataaars/svg?seed=${appt.doctorId}`
+                }
+                alt={appt.doctorName}
               />
               <AvatarFallback className="bg-primary/10 text-primary font-bold">
                 {appt.doctorName?.charAt(0) || "?"}
@@ -189,6 +190,7 @@ export default function PatientAppointments() {
             </div>
             <div className="flex flex-col items-end gap-2 flex-shrink-0">
               <StatusBadge status={appt.status.toLowerCase() as any} />
+              <AppointmentPaymentBadge appointment={appt} />
               {overdue && (
                 <span className="text-[14px] font-medium px-2 py-0.5 rounded-full bg-warning/10 text-warning">
                   Quá hạn

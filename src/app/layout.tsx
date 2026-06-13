@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+// Mantine CSS bản "layer" — nằm trong @layer mantine (ưu tiên thấp), import
+// TRƯỚC globals.css để Tailwind/shadcn luôn thắng, không vỡ giao diện hiện có.
+import "@mantine/core/styles.layer.css";
+import "@mantine/notifications/styles.layer.css";
 import "./globals.css";
 import { Providers } from "./providers";
 
-// Typography is Times New Roman across every role; the family is wired
-// through the --font-sans/--font-display/--font-mono CSS vars in globals.css,
-// so no web font is loaded here.
 
 export const metadata: Metadata = {
-  title: "MedCare — Clinical Workstation",
+  title: "MedCare",
   description: "Hệ thống quản lý phòng khám hiện đại",
   icons: {
     icon: "/medcare-logo.png",

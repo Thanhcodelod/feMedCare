@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { orderService } from "@/api/payment";
 import type { CreateOrderPayload, OrderStatusResponse } from "@/types/api";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 
 export const ORDERS_KEY = "orders";
 

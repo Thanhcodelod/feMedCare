@@ -1,7 +1,7 @@
 "use client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { apiLogin, apiRegister } from "@/api/auth";
 import { authService } from "@/api/auth";
 import { useAuthStore } from "@/redux/authStore";

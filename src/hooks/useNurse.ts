@@ -1,6 +1,6 @@
 "use client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { nurseService } from "@/api/nurse";
 import { useAuthHydration } from "@/hooks/useAuthHydration";
 import type { CheckInPayload } from "@/types/api";

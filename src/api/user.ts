@@ -21,6 +21,7 @@ export interface UserProfile {
   totalPatients?: number;
   dateOfBirth?: string;
   gender?: string;
+  address?: string;
   bloodType?: string;
   bio?: string;
   consultation_fee?: number | string;
@@ -44,7 +45,16 @@ const normalizeUser = (u: any): UserProfile => {
     licenseNumber: dr.license_number || dr.licenseNumber || profile.licenseNumber || u.licenseNumber || "",
     consultation_fee: dr.consultation_fee || profile.consultation_fee || u.consultation_fee || 0,
     bio: dr.bio || profile.bio || u.bio || "",
-    dateOfBirth: profile.dateOfBirth || profile.dob || u.dateOfBirth || u.dob || "",
+    // BE trả về snake_case (date_of_birth, gender, address) trong `profile`.
+    dateOfBirth:
+      profile.date_of_birth ||
+      profile.dateOfBirth ||
+      profile.dob ||
+      u.dateOfBirth ||
+      u.dob ||
+      "",
+    gender: profile.gender || u.gender || "",
+    address: profile.address || u.address || "",
     bloodType: pt.blood_type || pt.bloodType || profile.bloodType || u.bloodType || "",
     emergencyContact:
       normalizeEmergencyContact(

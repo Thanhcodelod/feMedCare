@@ -63,7 +63,6 @@ export default function LandingPage() {
         )}
       </header>
 
-      {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden relative">
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 relative z-10 text-center lg:text-left">

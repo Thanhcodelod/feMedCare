@@ -6,10 +6,17 @@ import { Eye, EyeOff, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useLogin, useRegister } from "@/hooks/useAuth";
 import { AUTH_FIELD_LIMITS } from "@/types/api";
 import { cn } from "@/utils/utils";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 
 type Mode = "login" | "register";
 
@@ -62,6 +69,8 @@ function LoginInner() {
   const [regEmail, setRegEmail] = useState("");
   const [regPassword, setRegPassword] = useState("");
   const [regPhone, setRegPhone] = useState("");
+  const [regDob, setRegDob] = useState("");
+  const [regGender, setRegGender] = useState("");
 
   const loginMutation = useLogin();
   const registerMutation = useRegister();
@@ -120,6 +129,8 @@ function LoginInner() {
       email: regEmail.trim(),
       password: regPassword,
       ...(trimmedPhone ? { phone: trimmedPhone } : {}),
+      ...(regDob ? { dateOfBirth: regDob } : {}),
+      ...(regGender ? { gender: regGender as "MALE" | "FEMALE" | "OTHER" } : {}),
     });
   };
 
@@ -259,6 +270,32 @@ function LoginInner() {
                     className="mt-1.5"
                     maxLength={AUTH_FIELD_LIMITS.phone}
                   />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label className="text-sm font-medium">Ngày sinh</Label>
+                  <Input
+                    type="date"
+                    value={regDob}
+                    onChange={(e) => setRegDob(e.target.value)}
+                    className="mt-1.5"
+                    max={new Date().toISOString().split("T")[0]}
+                  />
+                </div>
+                <div>
+                  <Label className="text-sm font-medium">Giới tính</Label>
+                  <Select value={regGender} onValueChange={setRegGender}>
+                    <SelectTrigger className="mt-1.5">
+                      <SelectValue placeholder="Chọn giới tính" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="MALE">Nam</SelectItem>
+                      <SelectItem value="FEMALE">Nữ</SelectItem>
+                      <SelectItem value="OTHER">Khác</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 

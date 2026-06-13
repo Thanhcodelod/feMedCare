@@ -136,7 +136,11 @@ export default function PatientDashboard() {
                   </div>
                   <Avatar className="w-9 h-9 rounded-md flex-shrink-0">
                     <AvatarImage
-                      src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${a.doctorId}`}
+                      src={
+                        a.doctorAvatar ||
+                        `https://api.dicebear.com/7.x/avataaars/svg?seed=${a.doctorId}`
+                      }
+                      alt={a.doctorName}
                     />
                     <AvatarFallback className="rounded-md bg-secondary text-foreground text-xs font-semibold">
                       {a.doctorName?.charAt(0) || "?"}
@@ -208,7 +212,7 @@ export default function PatientDashboard() {
                         {doc.fullName || doc.name}
                       </p>
                       <p className="text-2xs text-muted-foreground truncate">
-                        {doc.specialization} · {(doc.averageRating ?? 0).toFixed(1)} ★
+                        {doc.specialization}
                       </p>
                     </div>
                     <ChevronRight className="w-3.5 h-3.5 text-muted-foreground/30 group-hover:text-muted-foreground" />

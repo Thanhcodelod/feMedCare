@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -9,28 +8,18 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { useAuthStore } from "@/redux/authStore";
 import {
   useProfile,
-  useUpdateProfile,
+  useUpdateMyProfile,
   useUpdatePatientDetails,
 } from "@/hooks/useUser";
 import { EMERGENCY_CONTACT_LIMITS } from "@/types/api";
 import {
-  User,
   Droplets,
-  ShieldCheck,
-  History,
-  Activity,
   Save,
-  PlusCircle,
   AlertCircle,
   Loader2,
-  Scale,
-  CreditCard,
-  Target,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Form,
   FormControl,
@@ -50,21 +39,6 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChangePasswordDialog } from "@/components/shared/ChangePasswordDialog";
-
-const HealthMetricsCharts = dynamic(
-  () =>
-    import("@/components/patient/HealthMetricsCharts").then(
-      (m) => m.HealthMetricsCharts,
-    ),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex justify-center py-16">
-        <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
-      </div>
-    ),
-  },
-);
 
 const profileSchema = z.object({
   fullName: z.string().min(2, "Họ tên phải ít nhất 2 ký tự"),
@@ -98,9 +72,8 @@ const emergencyContactSchema = z.object({
 export default function PatientSettings() {
   const user = useAuthStore((s) => s.user);
   const { data: profile, isLoading: loadingProfile } = useProfile();
-  const updateProfile = useUpdateProfile();
+  const updateProfile = useUpdateMyProfile();
   const updatePatientDetails = useUpdatePatientDetails();
-  const [activeTab, setActiveTab] = useState("profile");
 
   const emergencyForm = useForm<z.infer<typeof emergencyContactSchema>>({
     resolver: zodResolver(emergencyContactSchema),
@@ -114,10 +87,12 @@ export default function PatientSettings() {
       email: user?.email || "",
       phone: user?.phone || "",
       dateOfBirth: (user as any)?.dateOfBirth || "",
-      gender: (user as any)?.gender || "Male",
-      bloodType: (user as any)?.bloodType || "O+",
+      gender: (user as any)?.gender || "",
+      bloodType: (user as any)?.bloodType || "",
+      address: (user as any)?.address || "",
     },
   });
+
 
   useEffect(() => {
     const data = profile || user;
@@ -126,9 +101,10 @@ export default function PatientSettings() {
         fullName: data.fullName || "",
         email: data.email || "",
         phone: data.phone || "",
-        dateOfBirth: (data as any).dateOfBirth?.split('T')[0] || "",
-        gender: (data as any).gender || "Male",
-        bloodType: (data as any).bloodType || "O+",
+        dateOfBirth: (data as any).dateOfBirth?.split("T")[0] || "",
+        gender: (data as any).gender || "",
+        bloodType: (data as any).bloodType || "",
+        address: (data as any).address || "",
       });
     }
   }, [profile, user, form]);
@@ -144,8 +120,23 @@ export default function PatientSettings() {
   }, [profile?.id, profile?.emergencyContact, emergencyForm]);
 
   const onSubmit = (values: z.infer<typeof profileSchema>) => {
-    if (!user?.id) return;
-    updateProfile.mutate({ userId: user.id, payload: values });
+    // Thông tin định danh (họ tên, SĐT, ngày sinh, giới tính, địa chỉ) nằm ở
+    // bảng profile → lưu qua /users/profile/me.
+    updateProfile.mutate({
+      fullName: values.fullName,
+      phone: values.phone,
+      ...(values.dateOfBirth ? { dateOfBirth: values.dateOfBirth } : {}),
+      ...(values.gender
+        ? { gender: values.gender as "MALE" | "FEMALE" | "OTHER" }
+        : {}),
+      ...(values.address ? { address: values.address } : {}),
+    });
+
+
+    const currentBlood = (profile as any)?.bloodType ?? "";
+    if (values.bloodType && values.bloodType !== currentBlood) {
+      updatePatientDetails.mutate({ blood_type: values.bloodType });
+    }
   };
 
   const onSubmitEmergency = (values: z.infer<typeof emergencyContactSchema>) => {
@@ -177,9 +168,6 @@ export default function PatientSettings() {
           <p className="text-muted-foreground mt-1">Nơi quản lý dữ liệu y tế cá nhân và các chỉ số sinh học của bạn.</p>
         </div>
         <div className="flex gap-2 items-center">
-           <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20 px-4 py-1.5 rounded-full text-sm">
-             <ShieldCheck className="w-4 h-4 mr-2" /> Bảo mật 2 lớp: Đã kích hoạt
-           </Badge>
            <ChangePasswordDialog />
         </div>
       </div>
@@ -203,74 +191,22 @@ export default function PatientSettings() {
               <h3 className="font-bold text-xl mb-1">{user?.fullName}</h3>
               <p className="text-xs text-muted-foreground font-mono mb-4 uppercase tracking-widest">PATIENT ID: {user?.id?.slice(-8).toUpperCase()}</p>
               
-              <div className="grid grid-cols-2 gap-3 mt-6">
+              <div className="mt-6">
                 <div className="p-3 bg-card rounded-md border border-border text-left">
                   <div className="flex items-center gap-2 mb-1">
                     <Droplets className="w-3.5 h-3.5 text-destructive" />
                     <span className="text-[14px] text-muted-foreground uppercase font-bold">Nhóm máu</span>
                   </div>
-                  <span className="text-sm font-bold">{profile?.bloodType || "O+"}</span>
-                </div>
-                <div className="p-3 bg-card rounded-md border border-border text-left">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Scale className="w-3.5 h-3.5 text-info" />
-                    <span className="text-[14px] text-muted-foreground uppercase font-bold">BMI</span>
-                  </div>
-                  <span className="text-sm font-bold">22.5 (Bình thường)</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border border-border">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-bold flex items-center gap-2">
-                <Target className="w-4 h-4 text-primary" /> Mục tiêu sức khỏe
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Giảm cân</span>
-                  <span className="font-bold">69.0 / 68kg</span>
-                </div>
-                <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div className="bg-primary h-full w-[85%]" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Uống nước (Lít/ngày)</span>
-                  <span className="font-bold">1.5 / 2.0L</span>
-                </div>
-                <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div className="bg-info h-full w-[75%]" />
+                  <span className="text-sm font-bold">{profile?.bloodType || "Chưa cập nhật"}</span>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Main Tabs Area */}
+        {/* Main Area — chỉ còn Hồ sơ cá nhân */}
         <div className="lg:col-span-8 xl:col-span-9">
-          <Tabs defaultValue="profile" className="w-full" onValueChange={setActiveTab}>
-            <TabsList className="w-full justify-start bg-muted/30 p-1 rounded-md h-14 mb-8">
-              <TabsTrigger value="profile" className="px-8 h-12 data-[state=active]:bg-card">
-                <User className="w-4 h-4 mr-2" /> Hồ sơ cá nhân
-              </TabsTrigger>
-              <TabsTrigger value="health" className="px-8 h-12 data-[state=active]:bg-card">
-                <Activity className="w-4 h-4 mr-2" /> Chỉ số sức khỏe
-              </TabsTrigger>
-              <TabsTrigger value="history" className="px-8 h-12 data-[state=active]:bg-card">
-                <History className="w-4 h-4 mr-2" /> Tiền sử y khoa
-              </TabsTrigger>
-              <TabsTrigger value="insurance" className="px-8 h-12 data-[state=active]:bg-card">
-                <CreditCard className="w-4 h-4 mr-2" /> Bảo hiểm
-              </TabsTrigger>
-            </TabsList>
-
-            {/* Profile Tab */}
-            <TabsContent value="profile" className="space-y-6 animate-in fade-in duration-150">
+            <div className="space-y-6 animate-in fade-in duration-150">
               <Card className="border border-border">
                 <CardHeader>
                   <CardTitle>Thông tin định danh</CardTitle>
@@ -339,16 +275,16 @@ export default function PatientSettings() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>Giới tính</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <Select onValueChange={field.onChange} value={field.value}>
                                 <FormControl>
                                   <SelectTrigger>
                                     <SelectValue placeholder="Chọn giới tính" />
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="Male">Nam</SelectItem>
-                                  <SelectItem value="Female">Nữ</SelectItem>
-                                  <SelectItem value="Other">Khác</SelectItem>
+                                  <SelectItem value="MALE">Nam</SelectItem>
+                                  <SelectItem value="FEMALE">Nữ</SelectItem>
+                                  <SelectItem value="OTHER">Khác</SelectItem>
                                 </SelectContent>
                               </Select>
                               <FormMessage />
@@ -378,6 +314,19 @@ export default function PatientSettings() {
                                   <SelectItem value="AB-">AB-</SelectItem>
                                 </SelectContent>
                               </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="address"
+                          render={({ field }) => (
+                            <FormItem className="md:col-span-2">
+                              <FormLabel>Địa chỉ</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành" {...field} />
+                              </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
@@ -485,108 +434,7 @@ export default function PatientSettings() {
                   </Form>
                 </CardContent>
               </Card>
-            </TabsContent>
-
-            {/* Health Metrics Tab — charts chunk only fetched when opened */}
-            <TabsContent value="health">
-              {activeTab === "health" && <HealthMetricsCharts />}
-            </TabsContent>
-
-            {/* Medical History Tab */}
-            <TabsContent value="history" className="animate-in fade-in duration-150">
-              <Card className="border border-border">
-                <CardHeader>
-                  <CardTitle>Lịch sử bệnh lý & Phẫu thuật</CardTitle>
-                  <CardDescription>Ghi lại các sự kiện y khoa quan trọng để bác sĩ có cái nhìn tổng quát khi khám bệnh.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                   <div className="relative border-l-2 border-primary/20 ml-4 py-4 space-y-12">
-                      <div className="relative pl-10">
-                         <div className="absolute left-[-11px] top-1 w-5 h-5 rounded-full bg-primary ring-4 ring-primary/10" />
-                         <div className="flex flex-col gap-1">
-                            <span className="text-[14px] font-bold text-primary uppercase tracking-wider">Tháng 08 / 2023</span>
-                            <h4 className="font-bold text-lg">Phẫu thuật mổ ruột thừa</h4>
-                            <p className="text-sm text-muted-foreground max-w-2xl">Thực hiện tại Bệnh viện Đa khoa thành phố. Kỹ thuật nội soi, hồi phục nhanh sau 10 ngày.</p>
-                            <div className="flex gap-2 mt-2">
-                               <Badge variant="outline" className="text-[14px] rounded-lg">Cấp cứu</Badge>
-                               <Badge variant="outline" className="text-[14px] rounded-lg">Hậu phẫu</Badge>
-                            </div>
-                         </div>
-                      </div>
-                      <div className="relative pl-10">
-                         <div className="absolute left-[-11px] top-1 w-5 h-5 rounded-full bg-primary/40 ring-4 ring-primary/5" />
-                         <div className="flex flex-col gap-1">
-                            <span className="text-[14px] font-bold text-muted-foreground uppercase tracking-wider">Năm 2021</span>
-                            <h4 className="font-bold text-lg">Điều trị sốt xuất huyết</h4>
-                            <p className="text-sm text-muted-foreground max-w-2xl">Điều trị nội trú 7 ngày tại trung tâm y tế quận. Không để lại di chứng.</p>
-                         </div>
-                      </div>
-                   </div>
-                   <Button variant="outline" className="w-full mt-12 rounded-md border-dashed h-12 gap-2">
-                     <PlusCircle className="w-5 h-5" /> Thêm sự kiện y khoa mới
-                   </Button>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* Insurance Tab */}
-            <TabsContent value="insurance" className="animate-in fade-in duration-150">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="relative group">
-                     {/* The Insurance Card UI */}
-                     <div className="aspect-[1.586/1] w-full bg-primary rounded-md p-8 text-white overflow-hidden relative">                        <div className="flex justify-between items-start relative mb-12">
-                           <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                                 <ShieldCheck className="w-6 h-6" />
-                              </div>
-                              <span className="font-bold text-lg tracking-tight">MedCare Premium</span>
-                           </div>
-                           <span className="text-xs opacity-80 font-bold uppercase tracking-widest">Health Insurance</span>
-                        </div>
-                        <div className="relative space-y-2">
-                           <span className="text-xs opacity-60 font-medium uppercase tracking-widest">Card Holder</span>
-                           <h4 className="text-2xl font-bold tracking-tight uppercase">{user?.fullName}</h4>
-                        </div>
-                        <div className="flex justify-between items-end mt-12 relative">
-                           <div className="space-y-1">
-                              <span className="text-[14px] opacity-60 uppercase font-bold tracking-widest">Card Number</span>
-                              <p className="text-xl font-mono tracking-widest">8010 •••• •••• 1234</p>
-                           </div>
-                           <div className="text-right space-y-1">
-                              <span className="text-[14px] opacity-60 uppercase font-bold tracking-widest">Expires</span>
-                              <p className="text-sm font-bold">12 / 2025</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div className="space-y-6">
-                     <Card className="border border-border">
-                        <CardHeader>
-                           <CardTitle className="text-lg">Chi tiết bảo hiểm</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                           <div className="flex justify-between py-3 border-b border-border/50">
-                              <span className="text-sm text-muted-foreground">Nhà cung cấp</span>
-                              <span className="text-sm font-bold">Bảo Việt Insurance</span>
-                           </div>
-                           <div className="flex justify-between py-3 border-b border-border/50">
-                              <span className="text-sm text-muted-foreground">Loại hợp đồng</span>
-                              <span className="text-sm font-bold">Khám sức khỏe toàn diện</span>
-                           </div>
-                           <div className="flex justify-between py-3 border-b border-border/50">
-                              <span className="text-sm text-muted-foreground">Tình trạng</span>
-                              <Badge className="bg-success/20 text-success border-none shadow-none">Đang kích hoạt</Badge>
-                           </div>
-                        </CardContent>
-                     </Card>
-                     <Button variant="outline" className="w-full rounded-md h-12 gap-2">
-                        <PlusCircle className="w-5 h-5" /> Cập nhật thẻ mới
-                     </Button>
-                  </div>
-               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
         </div>
       </div>
     </DashboardLayout>

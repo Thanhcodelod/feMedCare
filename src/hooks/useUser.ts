@@ -1,7 +1,7 @@
 "use client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { userService, UserProfile } from "@/api/user";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { useAuthStore } from "@/redux/authStore";
 import { useAuthHydration } from "@/hooks/useAuthHydration";
 import type {

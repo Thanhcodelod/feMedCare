@@ -31,7 +31,7 @@ import type {
   PaymentMethod,
 } from "@/types/api";
 import { useEffect } from "react";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { CreditCard } from "lucide-react";
 
 const specialties = [
@@ -195,7 +195,6 @@ export function PatientBookAppointmentComponent() {
         </p>
       </header>
 
-      {/* Stepper — editorial numbered, hairline progress */}
       <ol className="flex items-stretch border-y border-border mb-10">
         {steps.map((s, i) => {
           const state = i < step ? "done" : i === step ? "current" : "todo";
@@ -236,10 +235,10 @@ export function PatientBookAppointmentComponent() {
         })}
       </ol>
 
-      {/* Step 1: Choose doctor — master-detail (filter rail + list) */}
+
       {step === 0 && (
         <div className="grid lg:grid-cols-[240px_1fr] gap-x-10 gap-y-6">
-          {/* Filter rail */}
+
           <aside className="lg:sticky lg:top-4 lg:self-start space-y-5">
             <div>
               <div className="section-title mb-2">Tìm kiếm</div>
@@ -337,21 +336,8 @@ export function PatientBookAppointmentComponent() {
                         <p className="text-xs text-muted-foreground mt-0.5">
                           {doc.specialization}
                         </p>
-                        {/* Inline stats — text-to-text, no card-per-number */}
                         <div className="flex items-center gap-3 mt-1.5 text-xs text-muted-foreground tabular-nums">
-                          <span className="text-foreground font-medium">
-                            {(doc.averageRating ?? 0).toFixed(1)}
-                            <span className="text-warning"> ★</span>
-                          </span>
-                          <span aria-hidden>·</span>
-                          <span>
-                            {doc.yearsOfExperience ??
-                              doc.experience_years ??
-                              0}{" "}
-                            năm KN
-                          </span>
-                          <span aria-hidden>·</span>
-                          <span>{doc.totalPatients ?? 0} BN</span>
+
                         </div>
                       </div>
 
@@ -362,15 +348,7 @@ export function PatientBookAppointmentComponent() {
                           ).toLocaleString("vi-VN")}
                           <span className="text-muted-foreground"> ₫</span>
                         </span>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setDetailDoctor(doc);
-                          }}
-                          className="text-xs text-primary hover:underline"
-                        >
-                          Xem đánh giá
-                        </button>
+                        
                       </div>
 
                       <ChevronRight

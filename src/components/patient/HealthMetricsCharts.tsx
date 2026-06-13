@@ -23,12 +23,12 @@ import {
 } from "@/components/ui/card";
 
 const weightData = [
-  { date: "01/01", weight: 72, bmi: 23.5 },
-  { date: "15/01", weight: 71.5, bmi: 23.3 },
-  { date: "01/02", weight: 70.8, bmi: 23.1 },
-  { date: "15/02", weight: 70.2, bmi: 22.9 },
-  { date: "01/03", weight: 69.5, bmi: 22.7 },
-  { date: "15/03", weight: 69.0, bmi: 22.5 },
+  { date: "01/01", weight: 72 },
+  { date: "15/01", weight: 71.5 },
+  { date: "01/02", weight: 70.8 },
+  { date: "15/02", weight: 70.2 },
+  { date: "01/03", weight: 69.5 },
+  { date: "15/03", weight: 69.0 },
 ];
 
 const bpData = [
@@ -48,7 +48,7 @@ export function HealthMetricsCharts() {
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle className="text-sm font-bold flex items-center gap-2">
-                <Scale className="w-4 h-4 text-success" /> Cân nặng & BMI
+                <Scale className="w-4 h-4 text-success" /> Cân nặng
               </CardTitle>
               <CardDescription>
                 Theo dõi cân nặng 3 tháng gần nhất

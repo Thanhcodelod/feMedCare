@@ -11,7 +11,7 @@ import {
 } from "@/services/teleconsultationService";
 import { useAuthStore } from "@/redux/authStore";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 
 interface UseTelemedicineOptions {
   roomId: string;

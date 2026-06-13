@@ -26,7 +26,7 @@ import { useTelemedicine } from "@/hooks/useTelemedicine";
 import { useSOS } from "@/hooks/useSOS";
 import { useAuthStore } from "@/redux/authStore";
 import { Badge } from "@/components/ui/badge";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { Copy } from "lucide-react";
 
 function formatDuration(s: number) {

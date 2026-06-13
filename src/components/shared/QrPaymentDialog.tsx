@@ -18,7 +18,7 @@ import {
   QrCode,
   XCircle,
 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import {
   ORDER_TIMEOUT_MS,
   useOrderStatus,

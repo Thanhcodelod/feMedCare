@@ -12,8 +12,6 @@ import {
   LogOut,
   ChevronLeft,
   X,
-  Bell,
-  HelpCircle,
   ClipboardList,
 } from "lucide-react";
 import { cn } from "@/utils/utils";
@@ -36,8 +34,6 @@ const doctorNav = [
   { label: "Telemedicine", icon: Video, to: "/doctor/telemedicine" },
   { label: "Thống kê", icon: BarChart3, to: "/doctor/analytics" },
   { label: "Lịch nghỉ phép", icon: Calendar, to: "/doctor/leaves" },
-  { label: "Thông báo", icon: Bell, to: "/doctor/notifications" },
-  { label: "Hỗ trợ", icon: HelpCircle, to: "/doctor/help" },
 ];
 
 const patientNav = [
@@ -46,8 +42,6 @@ const patientNav = [
   { label: "Lịch của tôi", icon: FileText, to: "/patient/appointments" },
   { label: "Hồ sơ y tế", icon: FileText, to: "/patient/records" },
   { label: "Tư vấn video", icon: Video, to: "/patient/telemedicine" },
-  { label: "Thông báo", icon: Bell, to: "/patient/notifications" },
-  { label: "Hỗ trợ", icon: HelpCircle, to: "/patient/help" },
 ];
 
 const adminNav = [
@@ -57,13 +51,10 @@ const adminNav = [
   { label: "Duyệt đơn nghỉ", icon: FileText, to: "/admin/leaves" },
   { label: "Thống kê", icon: BarChart3, to: "/admin/analytics" },
   { label: "Cài đặt", icon: Settings, to: "/admin/settings" },
-  { label: "Thông báo", icon: Bell, to: "/admin/notifications" },
-  { label: "Hỗ trợ", icon: HelpCircle, to: "/admin/help" },
 ];
 
 const nurseNav = [
   { label: "Hàng đợi hôm nay", icon: ClipboardList, to: "/nurse/queue" },
-  { label: "Hỗ trợ", icon: HelpCircle, to: "/nurse/help" },
 ];
 
 const navMap: Record<UserRole, typeof doctorNav> = {
@@ -124,9 +115,7 @@ export function Sidebar({
 
       {/* Nav — section caps separating workflow vs. tooling */}
       <nav className="flex-1 overflow-y-auto py-5 px-3 space-y-0.5">
-        {!collapsed && (
-          <div className="section-title px-3 mb-2">Workflow</div>
-        )}
+        
         {nav.map((item) => (
           <Link
             key={item.to}

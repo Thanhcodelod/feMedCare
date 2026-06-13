@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { toast } from "sonner";
+import { toast } from "@/lib/notify";
 import { appointmentService } from "@/api/appointment";
 import { useAuthHydration } from "@/hooks/useAuthHydration";
 import { useAuthStore } from "@/redux/authStore";
